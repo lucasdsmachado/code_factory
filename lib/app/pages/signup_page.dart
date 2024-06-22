@@ -1,5 +1,4 @@
-import 'dart:convert';
-
+import 'package:code_factory/app/pages/login_page.dart';
 import 'package:code_factory/app/widgets/form_input.dart';
 import 'package:code_factory/app/widgets/generic_button.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +22,7 @@ class SignupPage extends StatelessWidget {
           ),
           Center(
             child: Image.asset(
-              "assets/signup_image.png",
+              "assets/images/signup_image.png",
               // width: screenWidth * 0.70,
               height: MediaQuery.of(context).size.height * 0.40,
             ),
@@ -48,7 +47,13 @@ class SignupPage extends StatelessWidget {
               ),
               GenericButton(
                 buttonText: "Registre-se",
-                onPressedFunction: () {},
+                onPressedFunction: () {
+                  // TODO: adicionar outras funcionalidades
+                  Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const LoginPage()));
+                },
               ),
             ],
           ))

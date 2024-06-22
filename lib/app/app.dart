@@ -1,5 +1,6 @@
 
 import 'package:code_factory/app/pages/login_page.dart';
+import 'package:code_factory/app/pages/user_profile.dart';
 import 'package:flutter/material.dart';
 
 class MyApp extends StatelessWidget {
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         fontFamily: "Rubik",
       ),
-      home: const LoginPage(),
+      home:  UserProfile(),
     );
   }
 }

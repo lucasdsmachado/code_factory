@@ -2,7 +2,6 @@ import 'package:code_factory/app/pages/signup_page.dart';
 import 'package:code_factory/app/widgets/form_input.dart';
 import 'package:code_factory/app/widgets/generic_button.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 // TODO: Estilizar a página
 // TODO: Validar  fomulário
@@ -23,7 +22,7 @@ class LoginPage extends StatelessWidget {
           ),
           Center(
             child: Image.asset(
-              "assets/login_image.png",
+              "assets/images/login_image.png",
               // width: screenWidth * 0.70,
               height: MediaQuery.of(context).size.height * 0.40,
             ),
