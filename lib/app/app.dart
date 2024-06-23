@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         fontFamily: "Rubik",
       ),
-      home: const LoginPage(),
+      home:  const LoginPage(),
     );
   }
 }
