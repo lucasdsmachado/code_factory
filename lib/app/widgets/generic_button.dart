@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
-// modelo de botão no estilo utilizado no app
-// para criar um botão basta utilizar este widget
-// exemplo:  GenericButton( buttonText: "Texto do botão", onPressedFunction: () {})
+
+
 
 
 class GenericButton extends StatelessWidget {

@@ -2,8 +2,7 @@ import 'package:code_factory/app/widgets/account_information_card.dart';
 import 'package:flutter/material.dart';
 
 // TODO: Gerar os dados do usuário dinamicamente
-// TODO: Efeito de click/tap nos list tiles 
-
+// TODO: Efeito de click/tap nos list tiles
 
 class AccountSettingsPage extends StatelessWidget {
   const AccountSettingsPage({super.key});
@@ -11,21 +10,20 @@ class AccountSettingsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
       body: ListView(
         children: [
-           const Center(
-             child: Padding(
-                       padding: EdgeInsets.only(top: 10, bottom: 20),
-                       child: Text(
-              "Configurações",
-              style: TextStyle(
-                fontSize: 24,
-                fontVariations: [FontVariation('wght', 500)],
+          const Center(
+            child: Padding(
+              padding: EdgeInsets.only(top: 10, bottom: 20),
+              child: Text(
+                "Configurações",
+                style: TextStyle(
+                  fontSize: 24,
+                  fontVariations: [FontVariation('wght', 500)],
+                ),
               ),
-                       ),
-                     ),
-           ),
+            ),
+          ),
           Image.asset(
             "assets/images/settings_image.png",
             height: MediaQuery.of(context).size.height * 0.40,
@@ -99,7 +97,7 @@ class AccountSettingsPage extends StatelessWidget {
             cardIcon: Icons.lock,
             cardSubtitle: 'Alterado há duas semanas',
           ),
-           const SizedBox(
+          const SizedBox(
             height: 30,
           ),
         ],

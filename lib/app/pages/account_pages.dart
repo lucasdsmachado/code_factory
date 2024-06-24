@@ -1,5 +1,6 @@
-import 'package:code_factory/app/pages/screens/account_settings_page.dart';
-import 'package:code_factory/app/pages/screens/user_profile_page.dart';
+import 'package:code_factory/app/pages/profile_screens/account_settings_page.dart';
+import 'package:code_factory/app/pages/profile_screens/home_page.dart';
+import 'package:code_factory/app/pages/profile_screens/user_profile_page.dart';
 import 'package:flutter/material.dart';
 
 class AccountPages extends StatefulWidget {
@@ -10,8 +11,8 @@ class AccountPages extends StatefulWidget {
 }
 
 class _AccountPagesState extends State<AccountPages> {
-  final PageController _pageController = PageController(initialPage: 1);
-  int indexBottonNavBar = 1;
+  final PageController _pageController = PageController();
+  int indexBottonNavBar = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -19,16 +20,14 @@ class _AccountPagesState extends State<AccountPages> {
       body: PageView(
         controller: _pageController,
         children: const [
-          Center(
-            child: Text("Cursos"),
-          ),
+          HomePage(),
           UserProfilePage(),
           AccountSettingsPage(),
         ],
       ),
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
-          border: Border.all(color: Colors.black26, width: 2),
+          border: Border.all(color: Colors.black26,),
           borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(20),
             topRight: Radius.circular(20),
@@ -37,8 +36,8 @@ class _AccountPagesState extends State<AccountPages> {
         child: ClipRRect(
           clipBehavior: Clip.antiAliasWithSaveLayer,
           borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(16),
-            topRight: Radius.circular(16),
+            topLeft: Radius.circular(20),
+            topRight: Radius.circular(20),
           ),
           child: BottomNavigationBar(
             currentIndex: indexBottonNavBar,
