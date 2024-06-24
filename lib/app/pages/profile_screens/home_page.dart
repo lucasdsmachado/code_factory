@@ -8,13 +8,15 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double margin = MediaQuery.of(context).size.width * 0.02; // TODO: AJUSTAR
+
     return Scaffold(
       body: ListView(
-        children: const [
+        children: [
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Padding(
+              const Padding(
                 padding: EdgeInsets.fromLTRB(10, 20, 10, 0),
                 child: Text(
                   "Olá:",
@@ -23,7 +25,7 @@ class HomePage extends StatelessWidget {
                   ]),
                 ),
               ),
-              Padding(
+              const Padding(
                 padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
                 child: Text(
                   "Lucas Moreno", // TODO: Gerar nome dinamicamente
@@ -36,10 +38,10 @@ class HomePage extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(left: 10),
+                padding: const EdgeInsets.only(left: 10),
                 child: Row(
                   children: [
-                    Text(
+                    const Text(
                       "Categoria:",
                       style: TextStyle(
                         fontVariations: [
@@ -47,36 +49,48 @@ class HomePage extends StatelessWidget {
                         ],
                       ),
                     ),
-                    Categories(text: "CSS"), // TODO: adicionar dinamicamente
-                    Categories(text: "Flutter"),
-                    Categories(text: "UI"),
-                    Categories(text: "UX"),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: margin),
+                      child: const Categories(text: "#CSS"),
+                    ), // TODO: adicionar dinamicamente
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: margin),
+                      child: const Categories(text: "#Flutter"),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: margin),
+                      child: const Categories(text: "#UI"),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: margin),
+                      child: const Categories(text: "#UX"),
+                    ),
                   ],
                 ),
               ),
-              SizedBox(height: 20),
-              CourseCard(
+              const SizedBox(height: 20),
+              const CourseCard(
                 nameImage: "ui_course_image",
                 courseTime: "3h 30 min",
                 courseName: "UI",
                 courseDesciption: "Design avançado de interface móvel",
                 backgroundCourseColor: Color(0xFFF8F2EE),
               ),
-              CourseCard(
+              const CourseCard(
                 nameImage: "html_course_image",
                 courseTime: "3h 30 min",
                 courseName: "HTML",
                 courseDesciption: "Aplicativos web avançados",
                 backgroundCourseColor: Color(0xFFE6EDF4),
               ),
-              CourseCard(
+              const CourseCard(
                 nameImage: "flutter_course_image",
                 courseTime: "3h 30 min",
                 courseName: "Flutter",
                 courseDesciption: "Aplicativos iOS e android avançados",
                 backgroundCourseColor: Color(0xFFF8F2EE),
               ),
-              CourseCard(
+              const CourseCard(
                 nameImage: "scrum_course_image",
                 courseTime: "3h 30 min",
                 courseName: "Scrum",
