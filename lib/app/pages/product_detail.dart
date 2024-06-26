@@ -1,52 +1,100 @@
 import 'package:code_factory/app/widgets/categories.dart';
+import 'package:code_factory/app/widgets/generic_button.dart';
 import 'package:flutter/material.dart';
 
 class ProductDetail extends StatelessWidget {
-  const ProductDetail({super.key});
+  final String courseName;
+  final String aboutTheCourse;
+  final int price;
+  final String pathImage; 
+  final String duration;
+
+  const ProductDetail(
+      {super.key,
+      required this.courseName,
+      required this.aboutTheCourse,
+      required this.price,
+      required this.duration,
+      required this.pathImage});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          const Padding(
-            padding: EdgeInsets.only(top: 10, bottom: 20),
-            child: Center(
-              child: Text(
-                "HTML", //TODO: Gerar dinamicamente
-                style: TextStyle(
-                  fontSize: 24,
-                  fontVariations: [FontVariation('wght', 500)],
+        body: ListView(
+      children: [
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(top: 10, bottom: 20),
+              child: Center(
+                child: Text(
+                  courseName,
+                  style: const TextStyle(
+                    fontSize: 24,
+                    fontVariations: [FontVariation('wght', 500)],
+                  ),
                 ),
               ),
             ),
-          ),
-          Image.asset(
-            "assets/images/html_course_page_image.png",
-            width: MediaQuery.of(context).size.width * 0.7,
-          ),
-          const Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Padding(
-                padding: EdgeInsets.fromLTRB(0, 20, 20, 30),
-                child: Categories(text: "R\$ 50"),
+            Image.asset(
+              "assets/images/$pathImage",
+              width: MediaQuery.of(context).size.width * 0.6,
+            ),
+             Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 20, 20, 30),
+                  child: Categories(text: "R\$ ${price.toString()}"),
+                ),
+              ],
+            ),
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.9,
+              child:  Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text("Sobre o curso",
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontVariations: [FontVariation("wght", 500)],
+                      )),
+                  Text(
+                      aboutTheCourse,
+                      style: const TextStyle(
+                        fontVariations: [FontVariation("wght", 400)],
+                      )),
+                ],
               ),
-            ],
-          ),
-          const Text("Sobre o curso",
-              style: TextStyle(
-                fontSize: 24,
-                fontVariations: [FontVariation("wght", 500)],
-              )),
-          Text(
-              "Você pode iniciar uma nova carreira em desenvolvimento web mento hoje aprendendo HTML e CSS. Tudo que você precisa é de um computador, um pouco de tempo, muita determinação e um professor em quem você confie.",
-              style: TextStyle(
-                fontVariations: [FontVariation("wght", 400)],
-              ))
-        ],
-      ),
-    );
+            ),
+            const SizedBox(height: 20),
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.9,
+              child:  Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(duration,
+                      style: const TextStyle(
+                        fontSize: 24,
+                        fontVariations: [FontVariation("wght", 500)],
+                      )),
+                  const Text("1h 30 min",
+                      style: TextStyle(
+                        fontVariations: [FontVariation("wght", 400)],
+                      )),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 30),
+              child: GenericButton(
+                  buttonText: "Adicionar ao carrinho",
+                  onPressedFunction: () {}),
+            )
+          ],
+        ),
+      ],
+    ));
   }
 }

@@ -1,0 +1,42 @@
+[
+    {
+        "courseName": "UI",
+        "description": "Design avançado de interface móvel",
+        "duration": "1h 30min",
+        "price": "50",
+        "aboutTheCourse": "This is the content for Page 1",
+        "courseImage": "ui_course_image.png",
+        "backgroundCardColor": "0xFFF8F2EE",
+        "pageDetailsImage": "html_course_page_image.png"
+    },
+    {
+        "courseName": "HTML",
+        "description": "Aplicativos web avançados",
+        "duration": "1h 30min",
+        "price": 50,
+        "aboutTheCourse": "Você pode iniciar uma nova carreira em desenvolvimento web hoje aprendendo HTML e CSS. Tudo que você precisa é de um computador, um pouco de tempo, muita determinação e um professor em quem você confie.",
+        "courseImage": "html_course_image.png",
+        "backgroundCardColor": "0xFFE6EDF4",
+        "pageDetailsImage": "html_course_page_image.png"
+    },
+    {
+        "courseName": "Flutter",
+        "description": "Aplicativos iOS e android avançados",
+        "duration": "1h 30min",
+        "price": 50,
+        "aboutTheCourse": "Aplicativos iOS e android avançados",
+        "courseImage": "flutter_course_image.png",
+        "backgroundCardColor": "0xFFF8F2EE",
+        "pageDetailsImage": "html_course_page_image.png"
+    },
+    {
+        "courseName": "Scrum",
+        "description": "Curso avançado de organização de projetos",
+        "duration": "1h 30min",
+        "price": 50,
+        "aboutTheCourse": "This is the content for Page 4",
+        "courseImage": "scrum_course_image.png",
+        "backgroundCardColor": "0xFFE6EDF4",
+        "pageDetailsImage": "html_course_page_image.png"
+    }
+]

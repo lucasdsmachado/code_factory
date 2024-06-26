@@ -1,19 +1,22 @@
-
+import 'package:code_factory/app/pages/product_detail.dart';
 import 'package:flutter/material.dart';
 
 class CourseCard extends StatelessWidget {
   final String nameImage;
   final String courseTime;
   final String courseName;
-  final String courseDesciption;
+  final String courseDescription;
   final Color backgroundCourseColor;
+  final VoidCallback navigateToPage;
 
   const CourseCard({
     super.key,
     required this.nameImage,
     required this.courseTime,
     required this.courseName,
-    required this.courseDesciption, required this.backgroundCourseColor,
+    required this.courseDescription,
+    required this.backgroundCourseColor,
+    required this.navigateToPage,
   });
 
   @override
@@ -22,9 +25,8 @@ class CourseCard extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
       child: Center(
         child: GestureDetector(
-          onTap: ()=> {print("ok")}, // TODO: Navegar para a Página do curso
+          onTap: navigateToPage,
           child: Container(
-            
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(16),
                 border: Border.all(color: Colors.black26)),
@@ -40,12 +42,12 @@ class CourseCard extends StatelessWidget {
                   ),
                   child: Center(
                     child: Container(
-                        color:  backgroundCourseColor,
+                        color: backgroundCourseColor,
                         width: MediaQuery.of(context).size.width * 0.9,
                         height: MediaQuery.of(context).size.height * 1 / 3,
                         child: Padding(
                           padding: const EdgeInsets.all(20),
-                          child: Image.asset("assets/images/$nameImage.png"),
+                          child: Image.asset("assets/images/$nameImage"),
                         )),
                   ),
                 ),
@@ -78,7 +80,7 @@ class CourseCard extends StatelessWidget {
                   padding: const EdgeInsets.only(left: 20, bottom: 5),
                   child: Column(
                     children: [
-                      Text(courseDesciption,
+                      Text(courseDescription,
                           style: const TextStyle(
                             color: Colors.black87,
                             fontVariations: [FontVariation("wght", 400)],
