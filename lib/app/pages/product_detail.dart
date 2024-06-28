@@ -1,12 +1,13 @@
 import 'package:code_factory/app/widgets/categories.dart';
 import 'package:code_factory/app/widgets/generic_button.dart';
+import 'package:code_factory/app/widgets/header.dart';
 import 'package:flutter/material.dart';
 
 class ProductDetail extends StatelessWidget {
   final String courseName;
   final String aboutTheCourse;
   final int price;
-  final String pathImage; 
+  final String pathImage;
   final String duration;
 
   const ProductDetail(
@@ -25,23 +26,17 @@ class ProductDetail extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 10, bottom: 20),
-              child: Center(
-                child: Text(
-                  courseName,
-                  style: const TextStyle(
-                    fontSize: 24,
-                    fontVariations: [FontVariation('wght', 500)],
-                  ),
-                ),
-              ),
+            Header(
+              headerTitle: courseName,
+              navigationFunction: () {
+                Navigator.pop(context);
+              },
             ),
             Image.asset(
               "assets/images/$pathImage",
               width: MediaQuery.of(context).size.width * 0.6,
             ),
-             Row(
+            Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Padding(
@@ -52,7 +47,7 @@ class ProductDetail extends StatelessWidget {
             ),
             SizedBox(
               width: MediaQuery.of(context).size.width * 0.9,
-              child:  Column(
+              child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Text("Sobre o curso",
@@ -60,8 +55,7 @@ class ProductDetail extends StatelessWidget {
                         fontSize: 24,
                         fontVariations: [FontVariation("wght", 500)],
                       )),
-                  Text(
-                      aboutTheCourse,
+                  Text(aboutTheCourse,
                       style: const TextStyle(
                         fontVariations: [FontVariation("wght", 400)],
                       )),
@@ -71,7 +65,7 @@ class ProductDetail extends StatelessWidget {
             const SizedBox(height: 20),
             SizedBox(
               width: MediaQuery.of(context).size.width * 0.9,
-              child:  Column(
+              child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(duration,

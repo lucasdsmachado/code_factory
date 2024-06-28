@@ -1,4 +1,6 @@
+import 'package:code_factory/app/pages/account_pages.dart';
 import 'package:code_factory/app/pages/login_page.dart';
+import 'package:code_factory/app/widgets/header.dart';
 import 'package:code_factory/app/widgets/profile_button.dart';
 import 'package:flutter/material.dart';
 
@@ -10,15 +12,12 @@ class UserProfilePage extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        const Padding(
-          padding: EdgeInsets.symmetric(vertical: 10),
-          child: Text(
-            "Perfil",
-            style: TextStyle(
-              fontSize: 24,
-              fontVariations: [FontVariation('wght', 500)],
-            ),
-          ),
+        Header(
+          headerTitle: 'Perfil',
+          navigationFunction: () {
+            Navigator.pushReplacement(context,
+                MaterialPageRoute(builder: (context) => const AccountPages()));
+          },
         ),
         Container(
           height: MediaQuery.of(context).size.height * 0.3,
@@ -56,8 +55,11 @@ class UserProfilePage extends StatelessWidget {
         ),
         TextButton(
             onPressed: () {
-              Navigator.pushReplacement(context,
-                  MaterialPageRoute(builder: (context) => const LoginPage())); // TODO: sair do app
+              Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          const LoginPage())); // TODO: sair do app
             },
             child: const Text(
               "Sair do aplicativo",

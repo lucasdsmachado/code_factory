@@ -1,4 +1,6 @@
+import 'package:code_factory/app/pages/account_pages.dart';
 import 'package:code_factory/app/widgets/account_information_card.dart';
+import 'package:code_factory/app/widgets/header.dart';
 import 'package:flutter/material.dart';
 
 // TODO: Gerar os dados do usuário dinamicamente
@@ -12,17 +14,14 @@ class AccountSettingsPage extends StatelessWidget {
     return Scaffold(
       body: ListView(
         children: [
-          const Center(
-            child: Padding(
-              padding: EdgeInsets.only(top: 10, bottom: 20),
-              child: Text(
-                "Configurações",
-                style: TextStyle(
-                  fontSize: 24,
-                  fontVariations: [FontVariation('wght', 500)],
-                ),
-              ),
-            ),
+          Header(
+            headerTitle: 'Configurações',
+            navigationFunction: () {
+              Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const AccountPages()));
+            },
           ),
           Image.asset(
             "assets/images/settings_image.png",
