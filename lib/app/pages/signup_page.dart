@@ -1,5 +1,6 @@
 import 'package:code_factory/app/pages/login_page.dart';
-import 'package:code_factory/app/widgets/form_input.dart';
+import 'package:code_factory/app/widgets/password_input.dart';
+import 'package:code_factory/app/widgets/text_input.dart';
 import 'package:code_factory/app/widgets/generic_button.dart';
 import 'package:flutter/material.dart';
 
@@ -33,15 +34,15 @@ class SignupPage extends StatelessWidget {
           Form(
               child: Column(
             children: [
-              const FormInput(labelTxt: "Nome"),
+              const TextInput(labelTxt: "Nome"),
               const SizedBox(
                 height: 15,
               ),
-              const FormInput(labelTxt: "Email"),
+              const TextInput(labelTxt: "Email"),
               const SizedBox(
                 height: 15,
               ),
-              const FormInput(labelTxt: "Senha"),
+              const PasswordInput(),
               const SizedBox(
                 height: 30,
               ),

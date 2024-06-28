@@ -3,7 +3,7 @@
         "courseName": "UI",
         "description": "Design avançado de interface móvel",
         "duration": "1h 30min",
-        "price": "50",
+        "price": 50,
         "aboutTheCourse": "This is the content for Page 1",
         "courseImage": "ui_course_image.png",
         "backgroundCardColor": "0xFFF8F2EE",

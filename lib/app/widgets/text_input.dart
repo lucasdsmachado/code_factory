@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 
-class FormInput extends StatelessWidget {
+class TextInput extends StatelessWidget {
   final String labelTxt;
 
-  const FormInput(
-      {super.key, required this.labelTxt,});
-
+  const TextInput({
+    super.key,
+    required this.labelTxt,
+  });
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -15,7 +16,6 @@ class FormInput extends StatelessWidget {
             labelText: labelTxt,
             border: const OutlineInputBorder(
                 borderRadius: BorderRadius.all(Radius.circular(12)))),
-        obscureText: true,
       ), // TODO: botão de Ver senha
     );
   }
