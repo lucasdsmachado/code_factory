@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
 
-
-
-
-
 class GenericButton extends StatelessWidget {
   final String buttonText;
   final VoidCallback onPressedFunction;
@@ -30,7 +26,10 @@ class GenericButton extends StatelessWidget {
         ),
         child: Text(
           buttonText,
-          style: const TextStyle(color: Colors.white),
+          style: const TextStyle(
+              color: Colors.white,
+              fontSize: 16,
+              fontVariations: [FontVariation("wght", 500)]),
         ),
       ),
     );

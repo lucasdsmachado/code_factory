@@ -1,14 +1,18 @@
+import 'package:code_factory/app/pages/account_pages.dart';
 import 'package:code_factory/app/pages/signup_page.dart';
-import 'package:code_factory/app/widgets/form_input.dart';
+import 'package:code_factory/app/widgets/password_input.dart';
+import 'package:code_factory/app/widgets/text_input.dart';
 import 'package:code_factory/app/widgets/generic_button.dart';
 import 'package:flutter/material.dart';
 
 // TODO: Estilizar a página
-// TODO: Validar  fomulário
+// TODO: Validar fomulário
 // TODO: Rotas
 
 class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+  LoginPage({super.key});
+
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -31,33 +35,50 @@ class LoginPage extends StatelessWidget {
             height: 40,
           ),
           Form(
-              child: Column(
-            children: [
-              const FormInput( labelTxt: "Email"),
-              const SizedBox(
-                height: 15,
-              ),
-              const FormInput( labelTxt: "Senha"),
-              const SizedBox(
-                height: 60,
-              ),
-              GenericButton(
-                buttonText: "Log in",
-                onPressedFunction: () {},
-              ),
-              TextButton(
-                  onPressed: () {
-                    Navigator.push(
+            key: _formKey,
+            child: Column(
+              children: [
+                const TextInput(labelTxt: "Email"),
+                const SizedBox(
+                  height: 15,
+                ),
+                const PasswordInput(isSignUp: false),
+                const SizedBox(
+                  height: 60,
+                ),
+                GenericButton(
+                  buttonText: "Log in",
+                  onPressedFunction: () {
+                    if (_formKey.currentState!.validate()) {
+                      Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const SignupPage()));
+                          builder: (context) => const AccountPages(), // TODO: validar login
+                        ),
+                      );
+                    }
                   },
-                  child: const Text("Registrar",
-                      style: TextStyle(
-                          color: Color(0XFF78746D),
-                          fontWeight: FontWeight.bold)))
-            ],
-          ))
+                ),
+                TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>  SignupPage(),
+                      ),
+                    );
+                  },
+                  child: const Text(
+                    "Registrar",
+                    style: TextStyle(
+                      color: Colors.black38,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ),
         ],
       ),
     );

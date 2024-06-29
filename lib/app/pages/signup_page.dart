@@ -1,5 +1,8 @@
+import 'package:code_factory/app/pages/account_pages.dart';
 import 'package:code_factory/app/pages/login_page.dart';
-import 'package:code_factory/app/widgets/form_input.dart';
+import 'package:code_factory/app/widgets/header.dart';
+import 'package:code_factory/app/widgets/password_input.dart';
+import 'package:code_factory/app/widgets/text_input.dart';
 import 'package:code_factory/app/widgets/generic_button.dart';
 import 'package:flutter/material.dart';
 
@@ -8,56 +11,70 @@ import 'package:flutter/material.dart';
 // TODO: Rotas
 
 class SignupPage extends StatelessWidget {
-  const SignupPage({super.key});
+  SignupPage({super.key});
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     // Obter a largura e a altura da tela
 
     return Scaffold(
-      body: Column(
-        children: [
-          const SizedBox(
-            height: 40,
-          ),
-          Center(
-            child: Image.asset(
-              "assets/images/signup_image.png",
-              // width: screenWidth * 0.70,
-              height: MediaQuery.of(context).size.height * 0.40,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Header(
+              headerTitle: '',
+              navigationFunction: () {
+                Navigator.pop(context);
+              },
             ),
-          ),
-          const SizedBox(
-            height: 40,
-          ),
-          Form(
-              child: Column(
-            children: [
-              const FormInput(labelTxt: "Nome"),
-              const SizedBox(
-                height: 15,
+            Center(
+              child: Image.asset(
+                "assets/images/signup_image.png",
+                // width: screenWidth * 0.70,
+                height: MediaQuery.of(context).size.height * 0.40,
               ),
-              const FormInput(labelTxt: "Email"),
-              const SizedBox(
-                height: 15,
-              ),
-              const FormInput(labelTxt: "Senha"),
-              const SizedBox(
-                height: 30,
-              ),
-              GenericButton(
-                buttonText: "Registre-se",
-                onPressedFunction: () {
-                  // TODO: adicionar outras funcionalidades
-                  Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const LoginPage()));
-                },
-              ),
-            ],
-          ))
-        ],
+            ),
+            const SizedBox(
+              height: 40,
+            ),
+            Form(
+                key: _formKey,
+                child: Column(
+                  children: [
+                    const TextInput(labelTxt: "Nome", isEmail: false,),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    const TextInput(labelTxt: "Email"),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    const PasswordInput(),
+                    const SizedBox(
+                      height: 30,
+                    ),
+                    GenericButton(
+                      buttonText: "Registre-se",
+                      onPressedFunction: () {
+                        // TODO: adicionar outras funcionalidades
+
+                        if (_formKey.currentState!.validate()) {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  const AccountPages(), // TODO: validar login
+                            ),
+                          );
+                        }
+                      },
+                    ),
+                    const SizedBox(height: 20,)
+                  ],
+                ))
+          ],
+        ),
       ),
     );
   }
