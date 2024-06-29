@@ -1,4 +1,3 @@
-
 import 'package:code_factory/app/pages/account_pages.dart';
 import 'package:code_factory/app/pages/login_page.dart';
 import 'package:code_factory/app/pages/product_detail.dart';
@@ -19,7 +18,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         fontFamily: "Rubik",
       ),
-      home:  const LoginPage(),
+      home: LoginPage(),
     );
   }
 }
