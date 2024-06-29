@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
 
 class PasswordInput extends StatefulWidget {
-  const PasswordInput({super.key});
+  final bool isSignUp;
+
+  const PasswordInput({super.key, this.isSignUp = true});
 
   @override
   State<PasswordInput> createState() => _PasswordInputState();
 }
 
 bool _hidePassword = true;
+final RegExp _passwordRegExp = RegExp(
+  r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,24}$',
+);
 
 class _PasswordInputState extends State<PasswordInput> {
   @override
@@ -15,7 +20,14 @@ class _PasswordInputState extends State<PasswordInput> {
     return SizedBox(
       width: MediaQuery.of(context).size.width * 0.90,
       child: TextFormField(
-        // ignore: prefer_const_constructors
+        validator: (value) {
+          if (value == null || value.isEmpty) {
+            return 'Por favor, insira uma senha';
+          } else if (widget.isSignUp && !_passwordRegExp.hasMatch(value)) {
+            return 'A senha deve ter entre 8 e 24 caracteres, incluir pelo menos uma letra maiúscula, uma letra minúscula e um caractere especial';
+          }
+          return null;
+        },
         decoration: InputDecoration(
           labelText: "Senha",
           suffixIcon: IconButton(

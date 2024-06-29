@@ -58,8 +58,7 @@ class UserProfilePage extends StatelessWidget {
               Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
-                      builder: (context) =>
-                          const LoginPage())); // TODO: sair do app
+                      builder: (context) => LoginPage())); // TODO: sair do app
             },
             child: const Text(
               "Sair do aplicativo",

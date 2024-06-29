@@ -1,4 +1,3 @@
-import 'package:code_factory/app/pages/product_detail.dart';
 import 'package:flutter/material.dart';
 
 class CourseCard extends StatelessWidget {
