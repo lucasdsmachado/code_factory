@@ -1,3 +1,4 @@
+import 'package:code_factory/app/pages/intro_page.dart';
 import 'package:code_factory/app/pages/login_page.dart';
 import 'package:flutter/material.dart';
 
@@ -20,7 +21,7 @@ class _SplashScreenState extends State<SplashScreen> {
     if (mounted) {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => LoginPage()),
+        MaterialPageRoute(builder: (context) => IntroPage()),
       );
     }
   }
