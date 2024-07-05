@@ -16,7 +16,7 @@ class IntroPage extends StatefulWidget {
 class _IntroPageState extends State<IntroPage> {
   final PageController _controller = PageController();
   int currentPage = 0;
-  
+
   @override
   void initState() {
     super.initState();
