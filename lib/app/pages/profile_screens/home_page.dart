@@ -1,7 +1,5 @@
 import 'dart:convert';
-import 'dart:io';
 import 'package:code_factory/app/pages/product_detail.dart';
-import 'package:code_factory/app/pages/signup_page.dart';
 import 'package:code_factory/app/widgets/categories.dart';
 import 'package:code_factory/app/widgets/course_card.dart';
 import 'package:flutter/material.dart';
@@ -11,10 +9,10 @@ class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
   @override
-  _HomePageState createState() => _HomePageState();
+  HomePageState createState() => HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class HomePageState extends State<HomePage> {
   List<Map<String, dynamic>> courses = [];
 
   @override
@@ -33,7 +31,8 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    double margin = MediaQuery.of(context).size.width * 0.02; // TODO: AJUSTAR
+    double margin = MediaQuery.of(context).size.width *
+        0.02; // TODO: ajustar se nescessário
 
     return Scaffold(
       body: courses.isEmpty
@@ -54,7 +53,7 @@ class _HomePageState extends State<HomePage> {
                   const Padding(
                     padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
                     child: Text(
-                      "Lucas Moreno", // TODO: Gerar nome dinamicamente
+                      "Lucas Moreno", // TODO: Adc nome dinamicamente
                       style: TextStyle(
                         fontSize: 32,
                         fontVariations: [
@@ -78,7 +77,7 @@ class _HomePageState extends State<HomePage> {
                         Padding(
                           padding: EdgeInsets.symmetric(horizontal: margin),
                           child: const Categories(text: "CSS"),
-                        ), // TODO: adicionar dinamicamente
+                        ), // TODO: Adicionar dinamicamente
                         Padding(
                           padding: EdgeInsets.symmetric(horizontal: margin),
                           child: const Categories(text: "Flutter"),
@@ -106,9 +105,10 @@ class _HomePageState extends State<HomePage> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) =>  ProductDetail(
+                              builder: (context) => ProductDetail(
                                     courseName: courses[0]['courseName'],
-                                    aboutTheCourse: courses[0]['aboutTheCourse'],
+                                    aboutTheCourse: courses[0]
+                                        ['aboutTheCourse'],
                                     price: courses[0]['price'],
                                     duration: courses[0]['duration'],
                                     pathImage: courses[0]['pageDetailsImage'],
@@ -122,16 +122,19 @@ class _HomePageState extends State<HomePage> {
                     courseDescription: courses[1]['description'],
                     backgroundCourseColor:
                         Color(int.parse(courses[1]["backgroundCardColor"])),
-                    navigateToPage: () { Navigator.push(
+                    navigateToPage: () {
+                      Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) =>  ProductDetail(
+                              builder: (context) => ProductDetail(
                                     courseName: courses[1]['courseName'],
-                                    aboutTheCourse: courses[1]['aboutTheCourse'],
+                                    aboutTheCourse: courses[1]
+                                        ['aboutTheCourse'],
                                     price: courses[1]['price'],
                                     duration: courses[1]['duration'],
                                     pathImage: courses[1]['pageDetailsImage'],
-                                  )));},
+                                  )));
+                    },
                   ),
                   CourseCard(
                     nameImage: courses[2]['courseImage'],
@@ -140,16 +143,19 @@ class _HomePageState extends State<HomePage> {
                     courseDescription: courses[2]['description'],
                     backgroundCourseColor:
                         Color(int.parse(courses[2]["backgroundCardColor"])),
-                    navigateToPage: () { Navigator.push(
+                    navigateToPage: () {
+                      Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) =>  ProductDetail(
+                              builder: (context) => ProductDetail(
                                     courseName: courses[2]['courseName'],
-                                    aboutTheCourse: courses[2]['aboutTheCourse'],
+                                    aboutTheCourse: courses[2]
+                                        ['aboutTheCourse'],
                                     price: courses[2]['price'],
                                     duration: courses[2]['duration'],
                                     pathImage: courses[2]['pageDetailsImage'],
-                                  )));},
+                                  )));
+                    },
                   ),
                   CourseCard(
                     nameImage: courses[3]['courseImage'],
@@ -158,16 +164,19 @@ class _HomePageState extends State<HomePage> {
                     courseDescription: courses[3]['description'],
                     backgroundCourseColor:
                         Color(int.parse(courses[3]["backgroundCardColor"])),
-                    navigateToPage: () { Navigator.push(
+                    navigateToPage: () {
+                      Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) =>  ProductDetail(
+                              builder: (context) => ProductDetail(
                                     courseName: courses[3]['courseName'],
-                                    aboutTheCourse: courses[3]['aboutTheCourse'],
+                                    aboutTheCourse: courses[3]
+                                        ['aboutTheCourse'],
                                     price: courses[3]['price'],
                                     duration: courses[3]['duration'],
                                     pathImage: courses[3]['pageDetailsImage'],
-                                  )));},
+                                  )));
+                    },
                   ),
                 ],
               ),

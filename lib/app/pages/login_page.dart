@@ -5,7 +5,6 @@ import 'package:code_factory/app/widgets/text_input.dart';
 import 'package:code_factory/app/widgets/generic_button.dart';
 import 'package:flutter/material.dart';
 
-// TODO: Estilizar a página
 // TODO: Validar fomulário
 // TODO: Rotas
 
@@ -71,7 +70,8 @@ class LoginPage extends StatelessWidget {
                   child: const Text(
                     "Registrar",
                     style: TextStyle(
-                      color: Colors.black38,
+                      color: Colors.black45,
+                      fontVariations: [FontVariation("wght", 500)],
                       fontWeight: FontWeight.bold,
                     ),
                   ),

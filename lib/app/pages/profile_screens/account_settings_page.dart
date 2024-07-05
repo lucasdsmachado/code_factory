@@ -4,11 +4,17 @@ import 'package:code_factory/app/widgets/header.dart';
 import 'package:flutter/material.dart';
 
 // TODO: Gerar os dados do usuário dinamicamente
-// TODO: Efeito de click/tap nos list tiles
 
-class AccountSettingsPage extends StatelessWidget {
+class AccountSettingsPage extends StatefulWidget {
   const AccountSettingsPage({super.key});
 
+  @override
+  State<AccountSettingsPage> createState() => _AccountSettingsPageState();
+}
+
+bool _toggleNotifications = true;
+
+class _AccountSettingsPageState extends State<AccountSettingsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,9 +65,19 @@ class AccountSettingsPage extends StatelessWidget {
                       fontSize: 20,
                     ),
                   ),
-                  trailing: const Icon(
-                    Icons.toggle_off,
-                    size: 50,
+                  trailing: IconButton(
+                    icon: _toggleNotifications
+                        ? const Icon(Icons.toggle_off, size: 40)
+                        : const Icon(
+                            Icons.toggle_on,
+                            size: 40,
+                            color: Colors.blueGrey
+                          ),
+                    onPressed: () {
+                      setState(() {
+                        _toggleNotifications = !_toggleNotifications;
+                      });
+                    },
                   ),
                 ),
               ),

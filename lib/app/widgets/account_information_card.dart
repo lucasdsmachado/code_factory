@@ -46,7 +46,7 @@ class AccountInformationCard extends StatelessWidget {
               ),
             ),
             subtitle: Text(cardSubtitle),
-            trailing: const Icon(Icons.arrow_forward_ios),
+            trailing: const Icon(Icons.arrow_forward_ios, color: Colors.black38,),
           ),
         ),
       ),

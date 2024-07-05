@@ -6,7 +6,6 @@ import 'package:code_factory/app/widgets/text_input.dart';
 import 'package:code_factory/app/widgets/generic_button.dart';
 import 'package:flutter/material.dart';
 
-// TODO: Estilizar a página
 // TODO: Validar  fomulário
 // TODO: Rotas
 
@@ -42,7 +41,10 @@ class SignupPage extends StatelessWidget {
                 key: _formKey,
                 child: Column(
                   children: [
-                    const TextInput(labelTxt: "Nome", isEmail: false,),
+                    const TextInput(
+                      labelTxt: "Nome",
+                      isEmail: false,
+                    ),
                     const SizedBox(
                       height: 15,
                     ),
@@ -60,6 +62,10 @@ class SignupPage extends StatelessWidget {
                         // TODO: adicionar outras funcionalidades
 
                         if (_formKey.currentState!.validate()) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                                content: Text('Conta criada com sucesso!')),
+                          );
                           Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
@@ -70,7 +76,9 @@ class SignupPage extends StatelessWidget {
                         }
                       },
                     ),
-                    const SizedBox(height: 20,)
+                    const SizedBox(
+                      height: 20,
+                    )
                   ],
                 ))
           ],

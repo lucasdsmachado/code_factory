@@ -20,7 +20,7 @@ class TextInput extends StatelessWidget {
       child: TextFormField(
         validator: (value) {
           if (value == null || value.isEmpty) {
-            return 'Por favor, insira um ${isEmail ? "email" : "valor"}';
+            return 'Por favor, insira um ${isEmail ? "email" : "nome"}';
           } else if (isEmail && !emailRegExp.hasMatch(value)) {
             return 'Por favor, insira um email válido';
           }
@@ -32,7 +32,7 @@ class TextInput extends StatelessWidget {
             borderRadius: BorderRadius.all(Radius.circular(12)),
           ),
         ),
-      ), // TODO: botão de Ver senha
+      ), 
     );
   }
 }

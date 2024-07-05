@@ -49,7 +49,7 @@ class _PasswordInputState extends State<PasswordInput> {
           ),
         ),
         obscureText: _hidePassword,
-      ), // TODO: botão de Ver senha
+      ), 
     );
   }
 }
