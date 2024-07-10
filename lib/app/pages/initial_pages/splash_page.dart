@@ -32,9 +32,11 @@ class _SplashScreenState extends State<SplashScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset('assets/images/splash.png'),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.4,
+              child: Image.asset('assets/images/splash.png')),
             const Padding(
-              padding: EdgeInsets.fromLTRB(0, 16, 0, 0),
+              padding: EdgeInsets.only(top: 16),
               child: Text(
                 "CodeFactory",
                 style: TextStyle(
