@@ -20,13 +20,12 @@ class PaymentPage extends StatelessWidget {
                   Navigator.pop(context);
                 },
               ),
-              const SizedBox(height: 127),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.05),
               SizedBox(
                 height: 253,
                 width: 375,
                 child: Image.asset(
                   "assets/images/payment_empty_image.png",
-                  fit: BoxFit.cover,
                 ),
               ),
               const SizedBox(height: 32),

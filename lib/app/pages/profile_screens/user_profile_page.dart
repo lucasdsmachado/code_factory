@@ -1,5 +1,6 @@
 import 'package:code_factory/app/pages/account_pages.dart';
 import 'package:code_factory/app/pages/login_page.dart';
+import 'package:code_factory/app/pages/payment_page.dart';
 import 'package:code_factory/app/widgets/header.dart';
 import 'package:code_factory/app/widgets/profile_button.dart';
 import 'package:flutter/material.dart';
@@ -51,7 +52,14 @@ class UserProfilePage extends StatelessWidget {
           ),
           ProfileButton(
             buttonText: "Pagamentos",
-            onPressedFunction: () {},
+            onPressedFunction: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => (const PaymentPage()),
+                ),
+              );
+            },
           ),
           const SizedBox(
             height: 15,
