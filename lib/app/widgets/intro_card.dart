@@ -1,38 +1,39 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class CardWidget extends StatelessWidget {
   final String imagePath;
   final String title;
   final String description;
+  final double marginTop;
 
   const CardWidget({
     super.key,
     required this.imagePath,
     required this.title,
     required this.description,
+    required this.marginTop,
   });
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]); //  tela fixa no modo retrato
+
+    
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        ClipRRect(
-          borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(15),
-            topRight: Radius.circular(15),
-          ),
-          child: Image.asset(
-            imagePath,
-            width: double.infinity,
-            height: 264,
-            fit: BoxFit.cover,
-          ),
+        SizedBox(
+          height: marginTop,
+        ),
+        Image.asset(
+          imagePath,
+          width: MediaQuery.of(context).size.width * 0.8,
         ),
         Padding(
           padding: const EdgeInsets.all(16),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 title,
