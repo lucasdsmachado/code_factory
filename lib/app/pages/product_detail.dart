@@ -1,6 +1,6 @@
-import 'package:code_factory/app/widgets/categories.dart';
-import 'package:code_factory/app/widgets/generic_button.dart';
-import 'package:code_factory/app/widgets/header.dart';
+import 'package:code_factory/app/widgets/others/categories.dart';
+import 'package:code_factory/app/widgets/buttons/generic_button.dart';
+import 'package:code_factory/app/widgets/others/header.dart';
 import 'package:flutter/material.dart';
 
 class ProductDetail extends StatelessWidget {

@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:code_factory/app/pages/product_detail.dart';
-import 'package:code_factory/app/widgets/categories.dart';
-import 'package:code_factory/app/widgets/course_card.dart';
+import 'package:code_factory/app/widgets/others/categories.dart';
+import 'package:code_factory/app/widgets/cards/course_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 

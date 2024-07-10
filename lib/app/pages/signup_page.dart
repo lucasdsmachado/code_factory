@@ -1,8 +1,8 @@
 import 'package:code_factory/app/pages/account_pages.dart';
-import 'package:code_factory/app/widgets/header.dart';
-import 'package:code_factory/app/widgets/password_input.dart';
-import 'package:code_factory/app/widgets/text_input.dart';
-import 'package:code_factory/app/widgets/generic_button.dart';
+import 'package:code_factory/app/widgets/others/header.dart';
+import 'package:code_factory/app/widgets/fields/password_input.dart';
+import 'package:code_factory/app/widgets/fields/text_input.dart';
+import 'package:code_factory/app/widgets/buttons/generic_button.dart';
 import 'package:flutter/material.dart';
 
 // TODO: Validar  fomulário

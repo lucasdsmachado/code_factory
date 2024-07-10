@@ -1,6 +1,6 @@
 import 'package:code_factory/app/pages/login_page.dart';
-import 'package:code_factory/app/widgets/generic_button.dart';
-import 'package:code_factory/app/widgets/intro_card.dart';
+import 'package:code_factory/app/widgets/buttons/generic_button.dart';
+import 'package:code_factory/app/widgets/cards/intro_card.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 

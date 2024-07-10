@@ -1,8 +1,8 @@
 import 'package:code_factory/app/pages/account_pages.dart';
 import 'package:code_factory/app/pages/login_page.dart';
 import 'package:code_factory/app/pages/payment_page.dart';
-import 'package:code_factory/app/widgets/header.dart';
-import 'package:code_factory/app/widgets/profile_button.dart';
+import 'package:code_factory/app/widgets/others/header.dart';
+import 'package:code_factory/app/widgets/buttons/profile_button.dart';
 import 'package:flutter/material.dart';
 
 class UserProfilePage extends StatelessWidget {
