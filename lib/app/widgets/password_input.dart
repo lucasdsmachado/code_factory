@@ -9,12 +9,12 @@ class PasswordInput extends StatefulWidget {
   State<PasswordInput> createState() => _PasswordInputState();
 }
 
-bool _hidePassword = true;
-final RegExp _passwordRegExp = RegExp(
-  r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,24}$',
-);
-
 class _PasswordInputState extends State<PasswordInput> {
+  bool _hidePassword = true;
+  final RegExp _passwordRegExp = RegExp(
+    r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,24}$',
+  );
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -24,12 +24,13 @@ class _PasswordInputState extends State<PasswordInput> {
           if (value == null || value.isEmpty) {
             return 'Por favor, insira uma senha';
           } else if (widget.isSignUp && !_passwordRegExp.hasMatch(value)) {
-            return 'A senha deve ter entre 8 e 24 caracteres, incluir pelo menos uma letra maiúscula, uma letra minúscula e um caractere especial';
+            return 'A senha deve ter entre 8 e 24 caracteres,incluir pelo menos uma letra maiúscula,uma letra minúscula e um caractere especial.';
           }
           return null;
         },
         decoration: InputDecoration(
           labelText: "Senha",
+          errorMaxLines: 5 ,
           suffixIcon: IconButton(
             icon: Icon(
               _hidePassword
@@ -49,7 +50,7 @@ class _PasswordInputState extends State<PasswordInput> {
           ),
         ),
         obscureText: _hidePassword,
-      ), 
+      ),
     );
   }
 }
