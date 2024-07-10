@@ -1,5 +1,4 @@
-import 'package:code_factory/app/pages/intro_page.dart';
-import 'package:code_factory/app/pages/login_page.dart';
+import 'package:code_factory/app/pages/initial_pages/intro_page.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {

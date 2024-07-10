@@ -1,8 +1,4 @@
-import 'package:code_factory/app/pages/account_pages.dart';
-import 'package:code_factory/app/pages/login_page.dart';
-import 'package:code_factory/app/pages/product_detail.dart';
-import 'package:code_factory/app/pages/profile_screens/home_page.dart';
-import 'package:code_factory/app/pages/splash_page.dart';
+import 'package:code_factory/app/pages/initial_pages/splash_page.dart';
 import 'package:flutter/material.dart';
 
 class MyApp extends StatelessWidget {
