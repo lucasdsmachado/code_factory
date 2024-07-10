@@ -6,7 +6,7 @@ class PaymentPage extends StatelessWidget {
   const PaymentPage({super.key});
 
   @override
-  // TO DO: ADICIONAR FORMAS DE PAGAMENTO
+  // TODO: ADICIONAR FORMAS DE PAGAMENTO
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView(
