@@ -1,21 +1,14 @@
 import 'package:code_factory/app/pages/account_pages.dart';
-import 'package:code_factory/app/widgets/cards/account_information_card.dart';
-import 'package:code_factory/app/widgets/cards/switch_cards.dart';
-import 'package:code_factory/app/widgets/others/header.dart';
 import 'package:flutter/material.dart';
+import 'package:code_factory/app/widgets/cards/switch_cards.dart';
+import 'package:code_factory/app/widgets/cards/account_information_card.dart';
+import 'package:code_factory/app/widgets/others/header.dart';
 
-// TODO: Gerar os dados do usuário dinamicamente
-
-class AccountSettingsPage extends StatefulWidget {
+class AccountSettingsPage extends StatelessWidget {
   const AccountSettingsPage({super.key});
 
   @override
-  State<AccountSettingsPage> createState() => _AccountSettingsPageState();
-}
-
-class _AccountSettingsPageState extends State<AccountSettingsPage> {
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) { 
     return Scaffold(
       body: ListView(
         children: [
@@ -23,9 +16,9 @@ class _AccountSettingsPageState extends State<AccountSettingsPage> {
             headerTitle: 'Configurações',
             navigationFunction: () {
               Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const AccountPages()));
+                context,
+                MaterialPageRoute(builder: (context) => const AccountPages()),
+              );
             },
           ),
           Image.asset(
@@ -35,8 +28,9 @@ class _AccountSettingsPageState extends State<AccountSettingsPage> {
           const SizedBox(height: 20),
           const SwitchCards(
             cardTitle: 'Tema',
-            cardIcon: Icons.contrast,
-            trackColor: Colors.black87,
+            cardIcon: Icons.nightlight_rounded,
+            trackColor: Colors.white70,
+            haveToggleTheme: true,
           ),
           const SizedBox(height: 20),
           const SwitchCards(
@@ -57,25 +51,19 @@ class _AccountSettingsPageState extends State<AccountSettingsPage> {
             cardIcon: Icons.person,
             cardSubtitle: 'Lucas Moreno',
           ),
-          const SizedBox(
-            height: 10,
-          ),
+          const SizedBox(height: 10),
           const AccountInformationCard(
             cardTitle: "Email",
             cardIcon: Icons.email,
             cardSubtitle: 'Lucas@mail.com',
           ),
-          const SizedBox(
-            height: 10,
-          ),
+          const SizedBox(height: 10),
           const AccountInformationCard(
             cardTitle: "Senha",
             cardIcon: Icons.lock,
             cardSubtitle: 'Alterado há duas semanas',
           ),
-          const SizedBox(
-            height: 30,
-          ),
+          const SizedBox(height: 30),
         ],
       ),
     );

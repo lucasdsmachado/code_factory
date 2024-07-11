@@ -25,9 +25,9 @@ class _AccountPagesState extends State<AccountPages> {
           AccountSettingsPage(),
         ],
       ),
-      bottomNavigationBar: Container(
+      bottomNavigationBar: (Container(
         decoration: BoxDecoration(
-          border: Border.all(color: Colors.black26,),
+          border: Border.all(color: Theme.of(context).dividerColor),
           borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(20),
             topRight: Radius.circular(20),
@@ -68,7 +68,7 @@ class _AccountPagesState extends State<AccountPages> {
             type: BottomNavigationBarType.fixed,
           ),
         ),
-      ),
+      )),
     );
   }
 }

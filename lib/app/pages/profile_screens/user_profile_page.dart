@@ -75,8 +75,8 @@ class UserProfilePage extends StatelessWidget {
               child: const Text(
                 "Sair do aplicativo",
                 style: TextStyle(
-                    fontVariations: [FontVariation('wght', 500)],
-                    color: Colors.black45),
+                  fontVariations: [FontVariation('wght', 500)],
+                ),
               )),
         ],
       ),

@@ -9,14 +9,14 @@ class CourseCard extends StatelessWidget {
   final VoidCallback navigateToPage;
 
   const CourseCard({
-    super.key,
+    Key? key,
     required this.nameImage,
     required this.courseTime,
     required this.courseName,
     required this.courseDescription,
     required this.backgroundCourseColor,
     required this.navigateToPage,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,8 +27,9 @@ class CourseCard extends StatelessWidget {
           onTap: navigateToPage,
           child: Container(
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(16),
-                border: Border.all(color: Colors.black26)),
+              borderRadius: BorderRadius.circular(16),
+              border: Border.all(color: Theme.of(context).dividerColor),
+            ),
             width: MediaQuery.of(context).size.width * 0.9,
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -41,13 +42,14 @@ class CourseCard extends StatelessWidget {
                   ),
                   child: Center(
                     child: Container(
-                        color: backgroundCourseColor,
-                        width: MediaQuery.of(context).size.width * 0.9,
-                        height: MediaQuery.of(context).size.height * 1 / 3,
-                        child: Padding(
-                          padding: const EdgeInsets.all(20),
-                          child: Image.asset("assets/images/$nameImage"),
-                        )),
+                      color: backgroundCourseColor,
+                      width: MediaQuery.of(context).size.width * 0.9,
+                      height: MediaQuery.of(context).size.height * 1 / 3,
+                      child: Padding(
+                        padding: const EdgeInsets.all(20),
+                        child: Image.asset("assets/images/$nameImage"),
+                      ),
+                    ),
                   ),
                 ),
                 const SizedBox(height: 20),
@@ -57,9 +59,10 @@ class CourseCard extends StatelessWidget {
                     children: [
                       Text(courseTime,
                           style: const TextStyle(
-                              color: Color(0xFF5BA092),
-                              fontVariations: [FontVariation("wght", 500)],
-                              fontSize: 12))
+                            color: Color(0xFF5BA092),
+                            fontVariations: [FontVariation("wght", 500)],
+                            fontSize: 12,
+                          )),
                     ],
                   ),
                 ),
@@ -69,9 +72,9 @@ class CourseCard extends StatelessWidget {
                     children: [
                       Text(courseName,
                           style: const TextStyle(
-                              color: Colors.black87,
-                              fontVariations: [FontVariation("wght", 500)],
-                              fontSize: 24))
+                            fontVariations: [FontVariation("wght", 500)],
+                            fontSize: 24,
+                          )),
                     ],
                   ),
                 ),
@@ -81,9 +84,8 @@ class CourseCard extends StatelessWidget {
                     children: [
                       Text(courseDescription,
                           style: const TextStyle(
-                            color: Colors.black87,
                             fontVariations: [FontVariation("wght", 400)],
-                          ))
+                          )),
                     ],
                   ),
                 ),

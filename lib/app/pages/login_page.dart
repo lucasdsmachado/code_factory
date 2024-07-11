@@ -72,7 +72,6 @@ class LoginPage extends StatelessWidget {
                     child: const Text(
                       "Registrar",
                       style: TextStyle(
-                        color: Colors.black45,
                         fontVariations: [FontVariation("wght", 500)],
                         fontWeight: FontWeight.bold,
                       ),

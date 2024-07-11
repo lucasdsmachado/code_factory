@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class AccountInformationCard extends StatelessWidget {
   final String cardTitle;
   final String cardSubtitle;
-  final IconData cardIcon; // Corrigido para IconData
+  final IconData cardIcon;
 
   const AccountInformationCard({
     super.key,
@@ -19,7 +19,7 @@ class AccountInformationCard extends StatelessWidget {
       child: Container(
         height: 80,
         decoration: BoxDecoration(
-          border: Border.all(color: Colors.black26, width: 1),
+          border: Border.all(color: Theme.of(context).dividerColor, width: 1),
           borderRadius: BorderRadius.circular(16),
         ),
         child: Center(
@@ -46,7 +46,10 @@ class AccountInformationCard extends StatelessWidget {
               ),
             ),
             subtitle: Text(cardSubtitle),
-            trailing: const Icon(Icons.arrow_forward_ios, color: Colors.black38,),
+            trailing: Icon(
+              Icons.arrow_forward_ios,
+              color: Theme.of(context).dividerColor,
+            ),
           ),
         ),
       ),

@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class Header extends StatelessWidget {
@@ -20,18 +19,19 @@ class Header extends StatelessWidget {
           const SizedBox(width: 12),
           Container(
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(25),
-                border: Border.all(
-                  color: Colors.black26,
-                )),
+              borderRadius: BorderRadius.circular(25),
+              border: Border.all(
+                color: Theme.of(context).dividerColor,
+              ),
+            ),
             child: Padding(
               padding: const EdgeInsets.all(2.0),
               child: IconButton(
-                  onPressed: navigationFunction,
-                  icon: const Icon(
-                    Icons.arrow_back_ios_rounded,
-                    color: Colors.black87,
-                  )),
+                onPressed: navigationFunction,
+                icon: const Icon(
+                  Icons.arrow_back_ios_rounded,
+                ),
+              ),
             ),
           ),
           Expanded(
