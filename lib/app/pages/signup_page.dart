@@ -4,6 +4,7 @@ import 'package:code_factory/app/widgets/fields/password_input.dart';
 import 'package:code_factory/app/widgets/fields/text_input.dart';
 import 'package:code_factory/app/widgets/buttons/generic_button.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 
 // TODO: Validar  fomulário
@@ -20,10 +21,21 @@ class SignupPage extends StatelessWidget {
     if (_formKey.currentState!.validate()) {
       try {
         print(_emailController.text + _passwordController.text);
-        await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        UserCredential userCredential =
+            await FirebaseAuth.instance.createUserWithEmailAndPassword(
           email: _emailController.text,
           password: _passwordController.text,
         );
+
+        String uid = userCredential.user!.uid;
+
+        await FirebaseDatabase.instance.ref().child('users/$uid').set({
+          'name': _nameController.text,
+          'email': _emailController.text,
+          'savedCourses': {},
+          'paymentMethods': {}
+        });
+
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
             content: Text('Conta criada com sucesso!'),
