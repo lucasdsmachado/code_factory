@@ -5,10 +5,13 @@ import 'package:code_factory/app/widgets/cards/account_information_card.dart';
 import 'package:code_factory/app/widgets/others/header.dart';
 
 class AccountSettingsPage extends StatelessWidget {
-  const AccountSettingsPage({super.key});
+  final String name;
+  final String email;
+  const AccountSettingsPage(
+      {super.key, required this.name, required this.email});
 
   @override
-  Widget build(BuildContext context) { 
+  Widget build(BuildContext context) {
     return Scaffold(
       body: ListView(
         children: [
@@ -46,16 +49,16 @@ class AccountSettingsPage extends StatelessWidget {
                   fontSize: 20,
                 )),
           ),
-          const AccountInformationCard(
+          AccountInformationCard(
             cardTitle: "Nome",
             cardIcon: Icons.person,
-            cardSubtitle: 'Lucas Moreno',
+            cardSubtitle: name,
           ),
           const SizedBox(height: 10),
-          const AccountInformationCard(
+          AccountInformationCard(
             cardTitle: "Email",
             cardIcon: Icons.email,
-            cardSubtitle: 'Lucas@mail.com',
+            cardSubtitle: email,
           ),
           const SizedBox(height: 10),
           const AccountInformationCard(
