@@ -30,8 +30,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-    
-    
+
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.6
@@ -60,7 +59,6 @@ dev_dependencies:
 flutter:
   assets:
     - assets/images/
-    - assets/json/
   fonts:
     - family: Rubik
       fonts:
@@ -68,7 +66,6 @@ flutter:
           style: normal
         - asset: assets/fonts/Rubik-Italic-VariableFont_wght.ttf
           style: italic
-
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
