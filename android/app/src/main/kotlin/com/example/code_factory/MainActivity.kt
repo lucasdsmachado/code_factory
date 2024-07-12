@@ -1,4 +1,4 @@
-package com.example.code_factory
+package codefactory.app
 
 import io.flutter.embedding.android.FlutterActivity
 
