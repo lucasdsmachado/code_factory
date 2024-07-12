@@ -3,6 +3,7 @@ import 'package:code_factory/app/widgets/others/header.dart';
 import 'package:code_factory/app/widgets/fields/password_input.dart';
 import 'package:code_factory/app/widgets/fields/text_input.dart';
 import 'package:code_factory/app/widgets/buttons/generic_button.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 // TODO: Validar  fomulário
@@ -11,6 +12,52 @@ import 'package:flutter/material.dart';
 class SignupPage extends StatelessWidget {
   SignupPage({super.key});
   final _formKey = GlobalKey<FormState>();
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
+  void _registerUser(BuildContext context) async {
+    if (_formKey.currentState!.validate()) {
+      try {
+        print(_emailController.text + _passwordController.text);
+        await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: _emailController.text,
+          password: _passwordController.text,
+        );
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Conta criada com sucesso!'),
+          ),
+        );
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const AccountPages(),
+          ),
+        );
+      } on FirebaseAuthException catch (e) {
+        if (e.code == 'weak-password') {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('A senha é muito fraca.'),
+            ),
+          );
+        } else if (e.code == 'email-already-in-use') {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('O email já está em uso.'),
+            ),
+          );
+        }
+      } catch (e) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Erro ao criar conta.'),
+          ),
+        );
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,18 +87,22 @@ class SignupPage extends StatelessWidget {
                 key: _formKey,
                 child: Column(
                   children: [
-                    const TextInput(
+                    TextInput(
                       labelTxt: "Nome",
                       isEmail: false,
+                      controller: _nameController,
                     ),
                     const SizedBox(
                       height: 15,
                     ),
-                    const TextInput(labelTxt: "Email"),
+                    TextInput(
+                      labelTxt: "Email",
+                      controller: _emailController,
+                    ),
                     const SizedBox(
                       height: 15,
                     ),
-                    const PasswordInput(),
+                    PasswordInput(controller: _passwordController),
                     const SizedBox(
                       height: 30,
                     ),
@@ -59,20 +110,7 @@ class SignupPage extends StatelessWidget {
                       buttonText: "Registre-se",
                       onPressedFunction: () {
                         // TODO: adicionar outras funcionalidades
-
-                        if (_formKey.currentState!.validate()) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                                content: Text('Conta criada com sucesso!')),
-                          );
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) =>
-                                  const AccountPages(), // TODO: validar login
-                            ),
-                          );
-                        }
+                        _registerUser(context);
                       },
                     ),
                     const SizedBox(
