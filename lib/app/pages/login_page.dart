@@ -4,6 +4,7 @@ import 'package:code_factory/app/widgets/fields/password_input.dart';
 import 'package:code_factory/app/widgets/fields/text_input.dart';
 import 'package:code_factory/app/widgets/buttons/generic_button.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 // TODO: Validar fomulário
 // TODO: Rotas
@@ -12,6 +13,46 @@ class LoginPage extends StatelessWidget {
   LoginPage({super.key});
 
   final _formKey = GlobalKey<FormState>();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
+  void _loginUser(BuildContext context) async {
+    if (_formKey.currentState!.validate()) {
+      try {
+        await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: _emailController.text,
+          password: _passwordController.text,
+        );
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const AccountPages(),
+          ),
+        );
+      } on FirebaseAuthException catch (e) {
+        print('Erro detectado ${e.code}');
+        if (e.code == 'user-not-found') {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('Usuário não encontrado.'),
+            ),
+          );
+        } else if (e.code == 'wrong-password') {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('Senha incorreta.'),
+            ),
+          );
+        }
+      } catch (e) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Erro ao fazer login.'),
+          ),
+        );
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,26 +79,24 @@ class LoginPage extends StatelessWidget {
               key: _formKey,
               child: Column(
                 children: [
-                  const TextInput(labelTxt: "Email"),
+                  TextInput(
+                    labelTxt: "Email",
+                    controller: _emailController,
+                  ),
                   const SizedBox(
                     height: 15,
                   ),
-                  const PasswordInput(isSignUp: false),
+                  PasswordInput(
+                    isSignUp: false,
+                    controller: _passwordController,
+                  ),
                   const SizedBox(
                     height: 60,
                   ),
                   GenericButton(
                     buttonText: "Log in",
                     onPressedFunction: () {
-                      if (_formKey.currentState!.validate()) {
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) =>
-                                const AccountPages(), // TODO: validar login
-                          ),
-                        );
-                      }
+                      _loginUser(context);
                     },
                   ),
                   TextButton(
