@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:code_factory/app/pages/product_detail.dart';
 import 'package:code_factory/app/widgets/others/categories.dart';
 import 'package:code_factory/app/widgets/cards/course_card.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 
@@ -22,11 +23,33 @@ class HomePageState extends State<HomePage> {
   }
 
   Future<void> loadCourses() async {
-    String jsonString =
-        await rootBundle.loadString('assets/json/course_pages_content.json');
-    setState(() {
-      courses = List<Map<String, dynamic>>.from(jsonDecode(jsonString));
-    });
+    DatabaseReference coursesRef = FirebaseDatabase.instance.ref('courses');
+
+    try {
+      DatabaseEvent event = await coursesRef.once();
+
+      if (event.snapshot.exists) {
+        List<Map<String, dynamic>> loadedCourses = [];
+        Map<dynamic, dynamic> coursesMap =
+            event.snapshot.value as Map<dynamic, dynamic>;
+
+        coursesMap.forEach((key, value) {
+          Map<String, dynamic> course = Map<String, dynamic>.from(value as Map);
+          loadedCourses.add(course);
+        });
+
+        setState(() {
+          courses = loadedCourses;
+        });
+      } else {
+        setState(() {
+          courses = [];
+        });
+      }
+    } catch (e) {
+      // Adicione um tratamento de erros
+      print("Erro ao carregar cursos: $e");
+    }
   }
 
   @override
