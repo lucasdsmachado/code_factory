@@ -1,6 +1,8 @@
 import 'package:code_factory/app/pages/profile_screens/account_settings_page.dart';
 import 'package:code_factory/app/pages/profile_screens/home_page.dart';
 import 'package:code_factory/app/pages/profile_screens/user_profile_page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 
 class AccountPages extends StatefulWidget {
@@ -12,17 +14,40 @@ class AccountPages extends StatefulWidget {
 
 class _AccountPagesState extends State<AccountPages> {
   final PageController _pageController = PageController();
+  late Map<String, dynamic> userData = {};
   int indexBottonNavBar = 0;
+
+  Future<void> _fetchUserData() async {
+    User? user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      DatabaseReference userRef =
+          FirebaseDatabase.instance.ref().child('users/${user.uid}');
+      DatabaseEvent event = await userRef.once();
+      setState(() {
+        userData = Map<String, String>.from(
+            event.snapshot.value! as Map<Object?, Object?>);
+      });
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _fetchUserData();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: PageView(
         controller: _pageController,
-        children: const [
-          HomePage(),
+        children: [
+          HomePage(name: userData['name'] ?? ''),
           UserProfilePage(),
-          AccountSettingsPage(),
+          AccountSettingsPage(
+            name: userData['name'] ?? '',
+            email: userData['email'] ?? '',
+          ),
         ],
       ),
       bottomNavigationBar: (Container(
