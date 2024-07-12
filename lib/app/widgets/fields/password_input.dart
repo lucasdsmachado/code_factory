@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 
 class PasswordInput extends StatefulWidget {
   final bool isSignUp;
+  final TextEditingController controller;
 
-  const PasswordInput({super.key, this.isSignUp = true});
+  const PasswordInput(
+      {super.key, this.isSignUp = true, required this.controller});
 
   @override
   State<PasswordInput> createState() => _PasswordInputState();
@@ -30,7 +32,7 @@ class _PasswordInputState extends State<PasswordInput> {
         },
         decoration: InputDecoration(
           labelText: "Senha",
-          errorMaxLines: 5 ,
+          errorMaxLines: 5,
           suffixIcon: IconButton(
             icon: Icon(
               _hidePassword
@@ -50,6 +52,7 @@ class _PasswordInputState extends State<PasswordInput> {
           ),
         ),
         obscureText: _hidePassword,
+        controller: widget.controller,
       ),
     );
   }

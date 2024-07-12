@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 class TextInput extends StatelessWidget {
   final String labelTxt;
   final bool isEmail;
+  final TextEditingController controller;
 
   const TextInput({
     super.key,
     required this.labelTxt,
+    required this.controller,
     this.isEmail = true,
   });
 
@@ -32,7 +34,8 @@ class TextInput extends StatelessWidget {
             borderRadius: BorderRadius.all(Radius.circular(12)),
           ),
         ),
-      ), 
+        controller: controller,
+      ),
     );
   }
 }
