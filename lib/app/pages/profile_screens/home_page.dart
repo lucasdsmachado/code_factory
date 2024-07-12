@@ -7,7 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  final String name;
+  const HomePage({super.key, required this.name});
 
   @override
   HomePageState createState() => HomePageState();
@@ -73,11 +74,11 @@ class HomePageState extends State<HomePage> {
                       ]),
                     ),
                   ),
-                  const Padding(
+                  Padding(
                     padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
                     child: Text(
-                      "Lucas Moreno", // TODO: Adc nome dinamicamente
-                      style: TextStyle(
+                      widget.name,
+                      style: const TextStyle(
                         fontSize: 32,
                         fontVariations: [
                           FontVariation("wght", 700),
@@ -117,90 +118,7 @@ class HomePageState extends State<HomePage> {
                     ),
                   ),
                   const SizedBox(height: 20),
-                  CourseCard(
-                    nameImage: courses[0]['courseImage'],
-                    courseTime: courses[0]['duration'],
-                    courseName: courses[0]['courseName'],
-                    courseDescription: courses[0]['description'],
-                    backgroundCourseColor:
-                        Color(int.parse(courses[0]["backgroundCardColor"])),
-                    navigateToPage: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => ProductDetail(
-                                    courseName: courses[0]['courseName'],
-                                    aboutTheCourse: courses[0]
-                                        ['aboutTheCourse'],
-                                    price: courses[0]['price'],
-                                    duration: courses[0]['duration'],
-                                    pathImage: courses[0]['pageDetailsImage'],
-                                  )));
-                    },
-                  ),
-                  CourseCard(
-                    nameImage: courses[1]['courseImage'],
-                    courseTime: courses[1]['duration'],
-                    courseName: courses[1]['courseName'],
-                    courseDescription: courses[1]['description'],
-                    backgroundCourseColor:
-                        Color(int.parse(courses[1]["backgroundCardColor"])),
-                    navigateToPage: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => ProductDetail(
-                                    courseName: courses[1]['courseName'],
-                                    aboutTheCourse: courses[1]
-                                        ['aboutTheCourse'],
-                                    price: courses[1]['price'],
-                                    duration: courses[1]['duration'],
-                                    pathImage: courses[1]['pageDetailsImage'],
-                                  )));
-                    },
-                  ),
-                  CourseCard(
-                    nameImage: courses[2]['courseImage'],
-                    courseTime: courses[2]['duration'],
-                    courseName: courses[2]['courseName'],
-                    courseDescription: courses[2]['description'],
-                    backgroundCourseColor:
-                        Color(int.parse(courses[2]["backgroundCardColor"])),
-                    navigateToPage: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => ProductDetail(
-                                    courseName: courses[2]['courseName'],
-                                    aboutTheCourse: courses[2]
-                                        ['aboutTheCourse'],
-                                    price: courses[2]['price'],
-                                    duration: courses[2]['duration'],
-                                    pathImage: courses[2]['pageDetailsImage'],
-                                  )));
-                    },
-                  ),
-                  CourseCard(
-                    nameImage: courses[3]['courseImage'],
-                    courseTime: courses[3]['duration'],
-                    courseName: courses[3]['courseName'],
-                    courseDescription: courses[3]['description'],
-                    backgroundCourseColor:
-                        Color(int.parse(courses[3]["backgroundCardColor"])),
-                    navigateToPage: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => ProductDetail(
-                                    courseName: courses[3]['courseName'],
-                                    aboutTheCourse: courses[3]
-                                        ['aboutTheCourse'],
-                                    price: courses[3]['price'],
-                                    duration: courses[3]['duration'],
-                                    pathImage: courses[3]['pageDetailsImage'],
-                                  )));
-                    },
-                  ),
+                  
                 ],
               ),
               const SizedBox(
