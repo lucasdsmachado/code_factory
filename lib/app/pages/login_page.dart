@@ -30,7 +30,6 @@ class LoginPage extends StatelessWidget {
           ),
         );
       } on FirebaseAuthException catch (e) {
-        print('Erro detectado ${e.code}');
         if (e.code == 'user-not-found') {
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
