@@ -7,20 +7,26 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 
-// TODO: Validar  fomulário
-// TODO: Rotas
+class SignupPage extends StatefulWidget {
+  const SignupPage({super.key});
 
-class SignupPage extends StatelessWidget {
-  SignupPage({super.key});
+  @override
+  SignupPageState createState() => SignupPageState();
+}
+
+class SignupPageState extends State<SignupPage> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  bool _isLoading = false;
 
   void _registerUser(BuildContext context) async {
     if (_formKey.currentState!.validate()) {
+      setState(() {
+        _isLoading = true;
+      });
       try {
-        print(_emailController.text + _passwordController.text);
         UserCredential userCredential =
             await FirebaseAuth.instance.createUserWithEmailAndPassword(
           email: _emailController.text,
@@ -67,14 +73,16 @@ class SignupPage extends StatelessWidget {
             content: Text('Erro ao criar conta.'),
           ),
         );
+      } finally {
+        setState(() {
+          _isLoading = false;
+        });
       }
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    // Obter a largura e a altura da tela
-
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -88,7 +96,6 @@ class SignupPage extends StatelessWidget {
             Center(
               child: Image.asset(
                 "assets/images/signup_image.png",
-                // width: screenWidth * 0.70,
                 height: MediaQuery.of(context).size.height * 0.40,
               ),
             ),
@@ -96,40 +103,39 @@ class SignupPage extends StatelessWidget {
               height: 40,
             ),
             Form(
-                key: _formKey,
-                child: Column(
-                  children: [
-                    TextInput(
-                      labelTxt: "Nome",
-                      isEmail: false,
-                      controller: _nameController,
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    TextInput(
-                      labelTxt: "Email",
-                      controller: _emailController,
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    PasswordInput(controller: _passwordController),
-                    const SizedBox(
-                      height: 30,
-                    ),
-                    GenericButton(
-                      buttonText: "Registre-se",
-                      onPressedFunction: () {
-                        // TODO: adicionar outras funcionalidades
-                        _registerUser(context);
-                      },
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    )
-                  ],
-                ))
+              key: _formKey,
+              child: Column(
+                children: [
+                  TextInput(
+                    labelTxt: "Nome",
+                    isEmail: false,
+                    controller: _nameController,
+                  ),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  TextInput(
+                    labelTxt: "Email",
+                    controller: _emailController,
+                  ),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  PasswordInput(controller: _passwordController),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  GenericButton(
+                    buttonText: _isLoading ? "Aguarde..." : "Registre-se",
+                    onPressedFunction:
+                        _isLoading ? () {} : () => _registerUser(context),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  )
+                ],
+              ),
+            )
           ],
         ),
       ),
