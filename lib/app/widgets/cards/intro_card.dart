@@ -17,17 +17,11 @@ class CardWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        ClipRRect(
-          borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(15),
-            topRight: Radius.circular(15),
-          ),
-          child: Image.asset(
-            imagePath,
-            width: double.infinity,
-            height: 264,
-            fit: BoxFit.cover,
-          ),
+        Image.asset(
+          imagePath,
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.width * 0.7,
+          fit: BoxFit.cover,
         ),
         Padding(
           padding: const EdgeInsets.all(16),
