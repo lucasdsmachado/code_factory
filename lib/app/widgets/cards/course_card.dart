@@ -7,9 +7,11 @@ class CourseCard extends StatelessWidget {
   final String courseDescription;
   final Color backgroundCourseColor;
   final VoidCallback navigateToPage;
+  final VoidCallback? longPress;
 
   const CourseCard({
     Key? key,
+    this.longPress,
     required this.nameImage,
     required this.courseTime,
     required this.courseName,
@@ -25,6 +27,7 @@ class CourseCard extends StatelessWidget {
       child: Center(
         child: GestureDetector(
           onTap: navigateToPage,
+          onLongPress: longPress,
           child: Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(16),
