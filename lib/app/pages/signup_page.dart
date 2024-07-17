@@ -64,8 +64,11 @@ class SignupPageState extends State<SignupPage> {
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
               content: Text('O email já está em uso.'),
+              
             ),
           );
+
+          
         }
       } catch (e) {
         ScaffoldMessenger.of(context).showSnackBar(

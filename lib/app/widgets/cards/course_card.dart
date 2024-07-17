@@ -10,7 +10,7 @@ class CourseCard extends StatelessWidget {
   final VoidCallback? longPress;
 
   const CourseCard({
-    Key? key,
+    super.key,
     this.longPress,
     required this.nameImage,
     required this.courseTime,
@@ -18,7 +18,7 @@ class CourseCard extends StatelessWidget {
     required this.courseDescription,
     required this.backgroundCourseColor,
     required this.navigateToPage,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

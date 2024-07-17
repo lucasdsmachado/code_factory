@@ -75,6 +75,8 @@ class HomePageState extends State<HomePage> {
           ),
           backgroundColor: Colors.green,
           duration: Duration(seconds: 2),
+          behavior: SnackBarBehavior.floating,
+          margin: EdgeInsets.all(10),
         ),
       );
     } catch (e) {
