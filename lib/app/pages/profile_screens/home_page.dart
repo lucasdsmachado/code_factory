@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:code_factory/app/pages/product_detail.dart';
 import 'package:code_factory/app/widgets/others/categories.dart';
 import 'package:code_factory/app/widgets/cards/course_card.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
@@ -36,12 +37,12 @@ class HomePageState extends State<HomePage> {
 
         coursesMap.forEach((key, value) {
           Map<String, dynamic> course = Map<String, dynamic>.from(value as Map);
+          course['courseId'] = key;
           loadedCourses.add(course);
         });
 
         setState(() {
           courses = loadedCourses;
-          print(courses);
         });
       } else {
         setState(() {
@@ -51,6 +52,45 @@ class HomePageState extends State<HomePage> {
     } catch (e) {
       // Adicione um tratamento de erros
       print("Erro ao carregar cursos: $e");
+    }
+  }
+
+  void _saveCourse(int index) async {
+    String courseId = courses[index]['courseId'];
+    String userId = FirebaseAuth.instance.currentUser!.uid;
+    DatabaseReference savedCoursesRef =
+        FirebaseDatabase.instance.ref('users/$userId/savedCourses/$courseId');
+
+    try {
+      await savedCoursesRef.set(true);
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text(
+            "Curso Salvo com Sucesso",
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 16.0,
+            ),
+          ),
+          backgroundColor: Colors.green,
+          duration: Duration(seconds: 2),
+        ),
+      );
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            "Erro ao salvar curso: $e",
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 16.0,
+            ),
+          ),
+          backgroundColor: Colors.red,
+          duration: const Duration(seconds: 2),
+        ),
+      );
     }
   }
 
@@ -124,85 +164,32 @@ class HomePageState extends State<HomePage> {
               const SizedBox(
                 height: 20,
               ),
-              CourseCard(
-                nameImage: courses[0]['courseImage'],
-                courseTime: courses[0]['duration'],
-                courseName: courses[0]['courseName'],
-                courseDescription: courses[0]['description'],
-                backgroundCourseColor:
-                    Color(int.parse(courses[0]["backgroundCardColor"])),
-                navigateToPage: () {
-                  Navigator.push(
+              ...courses.map(
+                (course) => CourseCard(
+                  nameImage: course['courseImage'],
+                  courseTime: course['duration'],
+                  courseName: course['courseName'],
+                  courseDescription: course['description'],
+                  backgroundCourseColor:
+                      Color(int.parse(course["backgroundCardColor"])),
+                  navigateToPage: () {
+                    Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => ProductDetail(
-                                courseName: courses[0]['courseName'],
-                                aboutTheCourse: courses[0]['aboutTheCourse'],
-                                price: courses[0]['price'],
-                                duration: courses[0]['duration'],
-                                pathImage: courses[0]['pageDetailsImage'],
-                              )));
-                },
-              ),
-              CourseCard(
-                nameImage: courses[1]['courseImage'],
-                courseTime: courses[1]['duration'],
-                courseName: courses[1]['courseName'],
-                courseDescription: courses[1]['description'],
-                backgroundCourseColor:
-                    Color(int.parse(courses[1]["backgroundCardColor"])),
-                navigateToPage: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => ProductDetail(
-                                courseName: courses[1]['courseName'],
-                                aboutTheCourse: courses[1]['aboutTheCourse'],
-                                price: courses[1]['price'],
-                                duration: courses[1]['duration'],
-                                pathImage: courses[1]['pageDetailsImage'],
-                              )));
-                },
-              ),
-              CourseCard(
-                nameImage: courses[2]['courseImage'],
-                courseTime: courses[2]['duration'],
-                courseName: courses[2]['courseName'],
-                courseDescription: courses[2]['description'],
-                backgroundCourseColor:
-                    Color(int.parse(courses[2]["backgroundCardColor"])),
-                navigateToPage: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => ProductDetail(
-                                courseName: courses[2]['courseName'],
-                                aboutTheCourse: courses[2]['aboutTheCourse'],
-                                price: courses[2]['price'],
-                                duration: courses[2]['duration'],
-                                pathImage: courses[2]['pageDetailsImage'],
-                              )));
-                },
-              ),
-              CourseCard(
-                nameImage: courses[3]['courseImage'],
-                courseTime: courses[3]['duration'],
-                courseName: courses[3]['courseName'],
-                courseDescription: courses[3]['description'],
-                backgroundCourseColor:
-                    Color(int.parse(courses[3]["backgroundCardColor"])),
-                navigateToPage: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => ProductDetail(
-                                courseName: courses[3]['courseName'],
-                                aboutTheCourse: courses[3]['aboutTheCourse'],
-                                price: courses[3]['price'],
-                                duration: courses[3]['duration'],
-                                pathImage: courses[3]['pageDetailsImage'],
-                              )));
-                },
+                        builder: (context) => ProductDetail(
+                          courseName: course['courseName'],
+                          aboutTheCourse: course['aboutTheCourse'],
+                          price: course['price'],
+                          duration: course['duration'],
+                          pathImage: course['pageDetailsImage'],
+                        ),
+                      ),
+                    );
+                  },
+                  longPress: () => {
+                    _saveCourse(courses.indexOf(course)),
+                  },
+                ),
               ),
             ]),
     );
