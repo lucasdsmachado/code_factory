@@ -1,13 +1,15 @@
 import 'package:code_factory/app/pages/account_pages.dart';
 import 'package:code_factory/app/pages/login_page.dart';
 import 'package:code_factory/app/pages/payment_page.dart';
+import 'package:code_factory/app/pages/saved_courses.dart';
 import 'package:code_factory/app/widgets/others/header.dart';
 import 'package:code_factory/app/widgets/buttons/profile_button.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class UserProfilePage extends StatelessWidget {
-  const UserProfilePage({super.key});
+  final String uid;
+  const UserProfilePage({super.key, required this.uid});
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +48,14 @@ class UserProfilePage extends StatelessWidget {
           ),
           ProfileButton(
             buttonText: "Salvos",
-            onPressedFunction: () {},
+            onPressedFunction: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => SavedCoursesPage(userId: uid),
+                ),
+              );
+            },
           ),
           const SizedBox(
             height: 15,

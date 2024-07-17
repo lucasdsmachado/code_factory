@@ -24,8 +24,8 @@ class _AccountPagesState extends State<AccountPages> {
           FirebaseDatabase.instance.ref().child('users/${user.uid}');
       DatabaseEvent event = await userRef.once();
       setState(() {
-        userData = Map<String, String>.from(
-            event.snapshot.value! as Map<Object?, Object?>);
+        userData = Map<String, dynamic>.from(
+            event.snapshot.value as Map<dynamic, dynamic>);
       });
     }
   }
@@ -43,7 +43,9 @@ class _AccountPagesState extends State<AccountPages> {
         controller: _pageController,
         children: [
           HomePage(name: userData['name'] ?? ''),
-          UserProfilePage(),
+          UserProfilePage(
+            uid: FirebaseAuth.instance.currentUser!.uid,
+          ),
           AccountSettingsPage(
             name: userData['name'] ?? '',
             email: userData['email'] ?? '',
