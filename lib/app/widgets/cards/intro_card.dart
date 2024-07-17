@@ -20,8 +20,8 @@ class CardWidget extends StatelessWidget {
         Image.asset(
           imagePath,
           width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.width * 0.7,
-          fit: BoxFit.cover,
+          height: MediaQuery.of(context).size.height * 0.3,
+          fit: BoxFit.contain,
         ),
         Padding(
           padding: const EdgeInsets.all(16),
