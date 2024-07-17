@@ -35,25 +35,29 @@ class UserProfilePageState extends State<UserProfilePage> {
           .child('profile_images')
           .child('${widget.uid}.jpg');
       final url = await ref.getDownloadURL();
-      setState(() {
-        _profileImageUrl = url;
-      });
+      if (mounted) {
+        setState(() {
+          _profileImageUrl = url;
+        });
+      }
     } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(
-            "Erro ao atualizar imagem de perfil: $e",
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 16.0,
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              "Erro ao atualizar imagem de perfil: $e",
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 16.0,
+              ),
             ),
+            backgroundColor: Colors.red,
+            duration: const Duration(seconds: 2),
+            behavior: SnackBarBehavior.floating,
+            margin: const EdgeInsets.all(10),
           ),
-          backgroundColor: Colors.red,
-          duration: const Duration(seconds: 2),
-          behavior: SnackBarBehavior.floating,
-          margin: const EdgeInsets.all(10),
-        ),
-      );
+        );
+      }
     }
   }
 
@@ -78,25 +82,29 @@ class UserProfilePageState extends State<UserProfilePage> {
             .child('${widget.uid}.jpg');
         await ref.putFile(_imageFile!);
         final url = await ref.getDownloadURL();
-        setState(() {
-          _profileImageUrl = url;
-        });
+        if (mounted) {
+          setState(() {
+            _profileImageUrl = url;
+          });
+        }
       } catch (e) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(
-              "Erro ao atualizar imagem de perfil: $e",
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 16.0,
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(
+                "Erro ao fazer upload da imagem: $e",
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 16.0,
+                ),
               ),
+              backgroundColor: Colors.red,
+              duration: const Duration(seconds: 2),
+              behavior: SnackBarBehavior.floating,
+              margin: const EdgeInsets.all(10),
             ),
-            backgroundColor: Colors.red,
-            duration: const Duration(seconds: 2),
-            behavior: SnackBarBehavior.floating,
-            margin: const EdgeInsets.all(10),
-          ),
-        );
+          );
+        }
       }
     }
   }
