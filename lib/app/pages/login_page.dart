@@ -6,8 +6,6 @@ import 'package:code_factory/app/widgets/buttons/generic_button.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-// TODO: Validar fomulário
-// TODO: Rotas
 
 class LoginPage extends StatelessWidget {
   LoginPage({super.key});
@@ -103,7 +101,7 @@ class LoginPage extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => SignupPage(),
+                          builder: (context) => const SignupPage(),
                         ),
                       );
                     },

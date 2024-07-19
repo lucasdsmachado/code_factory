@@ -1,11 +1,9 @@
-import 'dart:convert';
 import 'package:code_factory/app/pages/product_detail.dart';
 import 'package:code_factory/app/widgets/others/categories.dart';
 import 'package:code_factory/app/widgets/cards/course_card.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart' show rootBundle;
 
 class HomePage extends StatefulWidget {
   final String name;
@@ -99,7 +97,7 @@ class HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     double margin = MediaQuery.of(context).size.width *
-        0.02; // TODO: ajustar se nescessário
+        0.02; 
 
     return Scaffold(
       body: courses.isEmpty
@@ -118,7 +116,7 @@ class HomePageState extends State<HomePage> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
+                    padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
                     child: Text(
                       widget.name,
                       style: const TextStyle(
@@ -144,7 +142,7 @@ class HomePageState extends State<HomePage> {
                         Padding(
                           padding: EdgeInsets.symmetric(horizontal: margin),
                           child: const Categories(text: "CSS"),
-                        ), // TODO: Adicionar dinamicamente
+                        ), 
                         Padding(
                           padding: EdgeInsets.symmetric(horizontal: margin),
                           child: const Categories(text: "Flutter"),
