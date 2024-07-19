@@ -1,5 +1,5 @@
-import 'package:code_factory/app/pages/user_pages/account_pages.dart';
 import 'package:code_factory/app/pages/login_signup/login_page.dart';
+import 'package:code_factory/app/pages/user_pages/account_pages.dart';
 import 'package:code_factory/app/pages/user_pages/payment_page.dart';
 import 'package:code_factory/app/pages/user_pages/saved_courses.dart';
 import 'package:code_factory/app/widgets/others/header.dart';
@@ -40,24 +40,36 @@ class UserProfilePageState extends State<UserProfilePage> {
           _profileImageUrl = url;
         });
       }
+    } on FirebaseException catch (e) {
+      _handleFirebaseException(e);
     } catch (e) {
-      if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(
-              "Erro ao atualizar imagem de perfil: $e",
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 16.0,
-              ),
+      _showErrorSnackBar("Erro ao atualizar imagem de perfil: $e");
+    }
+  }
+
+  void _handleFirebaseException(FirebaseException e) {
+    if (e.code != 'object-not-found' && mounted) {
+      _showErrorSnackBar("Erro ao atualizar imagem de perfil: $e");
+    }
+  }
+
+  void _showErrorSnackBar(String message) {
+    if (mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            message,
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 16.0,
             ),
-            backgroundColor: Colors.red,
-            duration: const Duration(seconds: 2),
-            behavior: SnackBarBehavior.floating,
-            margin: const EdgeInsets.all(10),
           ),
-        );
-      }
+          backgroundColor: Colors.red,
+          duration: const Duration(seconds: 2),
+          behavior: SnackBarBehavior.floating,
+          margin: const EdgeInsets.all(10),
+        ),
+      );
     }
   }
 
@@ -89,21 +101,7 @@ class UserProfilePageState extends State<UserProfilePage> {
         }
       } catch (e) {
         if (mounted) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(
-                "Erro ao fazer upload da imagem: $e",
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 16.0,
-                ),
-              ),
-              backgroundColor: Colors.red,
-              duration: const Duration(seconds: 2),
-              behavior: SnackBarBehavior.floating,
-              margin: const EdgeInsets.all(10),
-            ),
-          );
+          _showErrorSnackBar("Erro ao atualizar imagem de perfil: $e");
         }
       }
     }
