@@ -1,5 +1,5 @@
-import 'package:code_factory/app/pages/account_pages.dart';
-import 'package:code_factory/app/pages/product_detail.dart';
+import 'package:code_factory/app/pages/user_pages/account_pages.dart';
+import 'package:code_factory/app/pages/course_pages/product_detail.dart';
 import 'package:code_factory/app/widgets/buttons/generic_button.dart';
 import 'package:code_factory/app/widgets/cards/course_card.dart';
 import 'package:code_factory/app/widgets/others/header.dart';
@@ -94,16 +94,18 @@ class SavedCoursesPageState extends State<SavedCoursesPage> {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text(
-            "Curso Removido com Sucesso",
+            "Curso Removido dos Salvos",
             style: TextStyle(
               color: Colors.white,
               fontSize: 16.0,
             ),
           ),
-          backgroundColor: Colors.green,
           duration: Duration(seconds: 2),
+          behavior: SnackBarBehavior.floating,
+          margin: EdgeInsets.all(10),
         ),
       );
+      
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(

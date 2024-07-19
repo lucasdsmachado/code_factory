@@ -1,4 +1,4 @@
-import 'package:code_factory/app/pages/account_pages.dart';
+import 'package:code_factory/app/pages/user_pages/account_pages.dart';
 import 'package:code_factory/app/widgets/others/header.dart';
 import 'package:code_factory/app/widgets/fields/password_input.dart';
 import 'package:code_factory/app/widgets/fields/text_input.dart';
@@ -42,10 +42,20 @@ class SignupPageState extends State<SignupPage> {
           'paymentMethods': {}
         });
 
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Conta criada com sucesso!'),
+          ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text(
+            "Conta criada com sucesso",
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 16.0,
+            ),
           ),
+          backgroundColor: Colors.green,
+          duration: Duration(seconds: 2),
+          behavior: SnackBarBehavior.floating,
+          margin: EdgeInsets.all(10),
+        ),
         );
         Navigator.pushReplacement(
           context,

@@ -1,5 +1,5 @@
-import 'package:code_factory/app/pages/account_pages.dart';
-import 'package:code_factory/app/pages/signup_page.dart';
+import 'package:code_factory/app/pages/user_pages/account_pages.dart';
+import 'package:code_factory/app/pages/login_signup/signup_page.dart';
 import 'package:code_factory/app/widgets/fields/password_input.dart';
 import 'package:code_factory/app/widgets/fields/text_input.dart';
 import 'package:code_factory/app/widgets/buttons/generic_button.dart';
