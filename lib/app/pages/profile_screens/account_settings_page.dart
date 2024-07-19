@@ -1,4 +1,4 @@
-import 'package:code_factory/app/pages/account_pages.dart';
+import 'package:code_factory/app/pages/user_pages/account_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:code_factory/app/widgets/cards/switch_cards.dart';
 import 'package:code_factory/app/widgets/cards/account_information_card.dart';

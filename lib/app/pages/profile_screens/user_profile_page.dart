@@ -1,7 +1,7 @@
-import 'package:code_factory/app/pages/account_pages.dart';
-import 'package:code_factory/app/pages/login_page.dart';
-import 'package:code_factory/app/pages/payment_page.dart';
-import 'package:code_factory/app/pages/saved_courses.dart';
+import 'package:code_factory/app/pages/user_pages/account_pages.dart';
+import 'package:code_factory/app/pages/login_signup/login_page.dart';
+import 'package:code_factory/app/pages/user_pages/payment_page.dart';
+import 'package:code_factory/app/pages/user_pages/saved_courses.dart';
 import 'package:code_factory/app/widgets/others/header.dart';
 import 'package:code_factory/app/widgets/buttons/profile_button.dart';
 import 'package:firebase_auth/firebase_auth.dart';
