@@ -1,4 +1,5 @@
 import 'package:code_factory/app/pages/course_pages/product_detail.dart';
+import 'package:code_factory/app/utils/firebase_helper.dart';
 import 'package:code_factory/app/widgets/others/categories.dart';
 import 'package:code_factory/app/widgets/cards/course_card.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -48,8 +49,7 @@ class HomePageState extends State<HomePage> {
         });
       }
     } catch (e) {
-      // TODO: Adicione um tratamento de erros
-      print("Erro ao carregar cursos: $e");
+      showErrorSnackBar(context, 'Erro ao carregar cursos $e');
     }
   }
 
