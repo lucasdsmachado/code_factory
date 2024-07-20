@@ -1,11 +1,11 @@
 import 'package:code_factory/app/pages/user_pages/account_pages.dart';
 import 'package:code_factory/app/pages/login_signup/signup_page.dart';
+import 'package:code_factory/app/utils/firebase_helper.dart';
 import 'package:code_factory/app/widgets/fields/password_input.dart';
 import 'package:code_factory/app/widgets/fields/text_input.dart';
 import 'package:code_factory/app/widgets/buttons/generic_button.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
 
 class LoginPage extends StatelessWidget {
   LoginPage({super.key});
@@ -28,25 +28,9 @@ class LoginPage extends StatelessWidget {
           ),
         );
       } on FirebaseAuthException catch (e) {
-        if (e.code == 'user-not-found') {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text('Usuário não encontrado.'),
-            ),
-          );
-        } else if (e.code == 'wrong-password') {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text('Senha incorreta.'),
-            ),
-          );
-        }
+        handleFirebaseException(context, e);
       } catch (e) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Erro ao fazer login.'),
-          ),
-        );
+        showErrorSnackBar(context, "Erro ao fazer login.");
       }
     }
   }

@@ -1,5 +1,6 @@
 import 'package:code_factory/app/pages/user_pages/account_pages.dart';
 import 'package:code_factory/app/pages/course_pages/product_detail.dart';
+import 'package:code_factory/app/utils/firebase_helper.dart';
 import 'package:code_factory/app/widgets/buttons/generic_button.dart';
 import 'package:code_factory/app/widgets/cards/course_card.dart';
 import 'package:code_factory/app/widgets/others/header.dart';
@@ -59,19 +60,7 @@ class SavedCoursesPageState extends State<SavedCoursesPage> {
         });
       }
     } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(
-            "Erro ao carregar cursos salvos: $e",
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 16.0,
-            ),
-          ),
-          backgroundColor: Colors.red,
-          duration: const Duration(seconds: 2),
-        ),
-      );
+      showErrorSnackBar(context, 'Erro ao carregar cursos salvos: $e');
       setState(() {
         isLoading = false;
       });
@@ -90,36 +79,9 @@ class SavedCoursesPageState extends State<SavedCoursesPage> {
       setState(() {
         savedCourses.removeAt(index);
       });
-
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text(
-            "Curso Removido dos Salvos",
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 16.0,
-            ),
-          ),
-          duration: Duration(seconds: 2),
-          behavior: SnackBarBehavior.floating,
-          margin: EdgeInsets.all(10),
-        ),
-      );
-      
+      showSucessSnackBar(context, 'Curso Removido dos Salvos');
     } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(
-            "Erro ao remover curso: $e",
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 16.0,
-            ),
-          ),
-          backgroundColor: Colors.red,
-          duration: const Duration(seconds: 2),
-        ),
-      );
+      showErrorSnackBar(context, 'Erro ao remover curso: $e');
     }
   }
 

@@ -61,36 +61,9 @@ class HomePageState extends State<HomePage> {
 
     try {
       await savedCoursesRef.set(true);
-
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text(
-            "Curso Salvo com Sucesso",
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 16.0,
-            ),
-          ),
-          backgroundColor: Colors.green,
-          duration: Duration(seconds: 2),
-          behavior: SnackBarBehavior.floating,
-          margin: EdgeInsets.all(10),
-        ),
-      );
+      showSucessSnackBar(context, "Curso Salvo com Sucesso");
     } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(
-            "Erro ao salvar curso: $e",
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 16.0,
-            ),
-          ),
-          backgroundColor: Colors.red,
-          duration: const Duration(seconds: 2),
-        ),
-      );
+      showErrorSnackBar(context, 'Erro ao salvar curso: $e');
     }
   }
 
