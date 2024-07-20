@@ -100,12 +100,12 @@ class SavedCoursesPageState extends State<SavedCoursesPage> {
               fontSize: 16.0,
             ),
           ),
+          backgroundColor: Colors.green,
           duration: Duration(seconds: 2),
           behavior: SnackBarBehavior.floating,
           margin: EdgeInsets.all(10),
         ),
       );
-      
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
