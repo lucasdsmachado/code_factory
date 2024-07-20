@@ -133,7 +133,7 @@ class UserProfilePageState extends State<UserProfilePage> {
           ProfileButton(
             buttonText: "Salvos",
             onPressedFunction: () {
-              Navigator.pushReplacement(
+              Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => SavedCoursesPage(userId: widget.uid),
