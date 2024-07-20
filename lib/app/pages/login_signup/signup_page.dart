@@ -1,4 +1,5 @@
 import 'package:code_factory/app/pages/user_pages/account_pages.dart';
+import 'package:code_factory/app/utils/firebase_helper.dart';
 import 'package:code_factory/app/widgets/others/header.dart';
 import 'package:code_factory/app/widgets/fields/password_input.dart';
 import 'package:code_factory/app/widgets/fields/text_input.dart';
@@ -42,21 +43,7 @@ class SignupPageState extends State<SignupPage> {
           'paymentMethods': {}
         });
 
-          ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text(
-            "Conta criada com sucesso",
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 16.0,
-            ),
-          ),
-          backgroundColor: Colors.green,
-          duration: Duration(seconds: 2),
-          behavior: SnackBarBehavior.floating,
-          margin: EdgeInsets.all(10),
-        ),
-        );
+        showSucessSnackBar(context, "Conta criada com sucesso");
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
@@ -64,28 +51,9 @@ class SignupPageState extends State<SignupPage> {
           ),
         );
       } on FirebaseAuthException catch (e) {
-        if (e.code == 'weak-password') {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text('A senha é muito fraca.'),
-            ),
-          );
-        } else if (e.code == 'email-already-in-use') {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text('O email já está em uso.'),
-              
-            ),
-          );
-
-          
-        }
+        handleFirebaseException(context, e);
       } catch (e) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Erro ao criar conta.'),
-          ),
-        );
+        showErrorSnackBar(context, 'Erro ao criar conta.');
       } finally {
         setState(() {
           _isLoading = false;
