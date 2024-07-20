@@ -8,6 +8,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:code_factory/app/utils/firebase_helper.dart';
 import 'dart:io';
 
 class UserProfilePage extends StatefulWidget {
@@ -41,35 +42,9 @@ class UserProfilePageState extends State<UserProfilePage> {
         });
       }
     } on FirebaseException catch (e) {
-      _handleFirebaseException(e);
+      handleFirebaseException(context, e);
     } catch (e) {
-      _showErrorSnackBar("Erro ao atualizar imagem de perfil: $e");
-    }
-  }
-
-  void _handleFirebaseException(FirebaseException e) {
-    if (e.code != 'object-not-found' && mounted) {
-      _showErrorSnackBar("Erro ao atualizar imagem de perfil: $e");
-    }
-  }
-
-  void _showErrorSnackBar(String message) {
-    if (mounted) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(
-            message,
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 16.0,
-            ),
-          ),
-          backgroundColor: Colors.red,
-          duration: const Duration(seconds: 2),
-          behavior: SnackBarBehavior.floating,
-          margin: const EdgeInsets.all(10),
-        ),
-      );
+      showErrorSnackBar(context, "Erro ao atualizar imagem de perfil: $e");
     }
   }
 
@@ -101,7 +76,7 @@ class UserProfilePageState extends State<UserProfilePage> {
         }
       } catch (e) {
         if (mounted) {
-          _showErrorSnackBar("Erro ao atualizar imagem de perfil: $e");
+          showErrorSnackBar(context, "Erro ao atualizar imagem de perfil: $e");
         }
       }
     }

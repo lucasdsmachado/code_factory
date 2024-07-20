@@ -1,4 +1,5 @@
 import 'package:code_factory/app/pages/course_pages/product_detail.dart';
+import 'package:code_factory/app/utils/firebase_helper.dart';
 import 'package:code_factory/app/widgets/others/categories.dart';
 import 'package:code_factory/app/widgets/cards/course_card.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -48,8 +49,7 @@ class HomePageState extends State<HomePage> {
         });
       }
     } catch (e) {
-      // TODO: Adicione um tratamento de erros
-      print("Erro ao carregar cursos: $e");
+      showErrorSnackBar(context, 'Erro ao carregar cursos $e');
     }
   }
 
@@ -96,8 +96,7 @@ class HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    double margin = MediaQuery.of(context).size.width *
-        0.02; 
+    double margin = MediaQuery.of(context).size.width * 0.02;
 
     return Scaffold(
       body: courses.isEmpty
@@ -142,7 +141,7 @@ class HomePageState extends State<HomePage> {
                         Padding(
                           padding: EdgeInsets.symmetric(horizontal: margin),
                           child: const Categories(text: "CSS"),
-                        ), 
+                        ),
                         Padding(
                           padding: EdgeInsets.symmetric(horizontal: margin),
                           child: const Categories(text: "Flutter"),
