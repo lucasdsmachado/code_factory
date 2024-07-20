@@ -136,12 +136,7 @@ class SavedCoursesPageState extends State<SavedCoursesPage> {
                     Header(
                       headerTitle: 'Salvos',
                       navigationFunction: () {
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const AccountPages(),
-                          ),
-                        );
+                        Navigator.pop(context);
                       },
                     ),
                     if (savedCourses.isEmpty)
