@@ -22,7 +22,6 @@ void showErrorSnackBar(BuildContext context, String message) {
 void handleFirebaseException(BuildContext context, FirebaseException e) {
   switch (e.code) {
     case 'object-not-found':
-      showErrorSnackBar(context, "Erro ao atualizar imagem de perfil: $e");
       break;
     case 'user-not-found':
       showErrorSnackBar(context, "Usuário não encontrado.");

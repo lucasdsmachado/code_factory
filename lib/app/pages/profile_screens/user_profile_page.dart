@@ -74,6 +74,8 @@ class UserProfilePageState extends State<UserProfilePage> {
             _profileImageUrl = url;
           });
         }
+      } on FirebaseException catch (e) {
+        handleFirebaseException(context, e);
       } catch (e) {
         if (mounted) {
           showErrorSnackBar(context, "Erro ao atualizar imagem de perfil: $e");
