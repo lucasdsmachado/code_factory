@@ -1,16 +1,21 @@
-# code_factory
+# Projeto Final PT-DEV TITAN (CodeFactory)
+Projeto final do Programa Trainee de Mobile da TITAN - Empresa Júnior de Engenharia da Computação da UFBA. Este aplicativo consiste em um aplicativo mobile criado em Flutter/Dart de uma plataforma de cursos.
 
-A new Flutter project.
+<p>
+  <img width="20%" src="" alt="image" />
+  <img width="20%"src="" />
+    <img width="20%"  src="" />
+</p>
 
-## Getting Started
+**O app possui um sistema de login e registro via Firebase**
 
-This project is a starting point for a Flutter application.
+<p>
+  <img width="20%" src="" alt="Login" />
+  <img width="20%"src=""  alt="Registro"/>
+</p>
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+**Possui tambem a opção de mudar o tema do app (dark/light)**
+<p>
+  <img width="20%" src="" alt="Dark Mode" />
+  <img width="20%"src=""  alt="Light Mode"/>
+</p>
