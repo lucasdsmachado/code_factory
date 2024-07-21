@@ -16,7 +16,7 @@ Projeto final do Programa Trainee de Mobile da TITAN - Empresa Júnior de Engenh
 
 **Possui tambem a opção de mudar o tema do app (dark/light)**
 <p>
-  <img width="20%" src="screen_config_dark.jpg" alt="Light Mode" style="margin-right: 10px;" />
-  <img width="20%" src="screen_config_light.jpg" alt="Dark Mode" style="margin-right: 10px;" />
+  <img width="20%" src="screen_config_light.jpg" alt="light Mode" style="margin-right: 10px;" />
+  <img width="20%" src="screen_config_dark.jpg" alt="dark Mode" style="margin-right: 10px;" />
   <img width="20%" src="screen_home_dark.jpg" alt="home screen dark mode" />
 </p>
